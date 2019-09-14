@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listOptions">
+        <item>Norsk</item>
+        <item>Tysk</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="listValues">
+        <item>no</item>
+        <item>de</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="spillStorrelse">
+        <item>Standard (5)</item>
+        <item>Moderat (10)</item>
+        <item>Viderekommende (25)</item>
+    </string-array>
+
+    <string-array name="spillStorrelseVerdier">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+    </string-array>
+</resources>
