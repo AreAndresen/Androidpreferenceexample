@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:summary="Username and password information"
-        android:title="Login information" >
-        <EditTextPreference
-            android:key="username"
-            android:summary="Please enter your login username"
-            android:title="Username" />
-        <EditTextPreference
-            android:key="password"
-            android:summary="Enter your password"
-            android:title="Password" />
-    </PreferenceCategory>
 
     <PreferenceCategory
-        android:summary="Username and password information"
-        android:title="Settings" >
-        <CheckBoxPreference
-            android:key="checkBox"
-            android:summary="On/Off"
-            android:title="Keep me logged in" />
-
+        android:summary="Språkinformasjon"
+        android:title="@string/hovedTittelSpraak" >
         <ListPreference
-            android:entries="@array/listOptions"
-            android:entryValues="@array/listValues"
-            android:key="listpref"
-            android:summary="List preference example"
-            android:title="List preference" />
+            android:entries="@array/spraakValg"
+            android:entryValues="@array/spraakVerdier"
+            android:key="spraak"
+            android:summary="@string/summarySpraak"
+            android:title="@string/tittelSpraak" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="Spillinformasjon"
+        android:title="@string/hovedTittelSpill" >
+        <ListPreference
+            android:entries="@array/spillStorrelse"
+            android:entryValues="@array/spillStorrelseVerdier"
+            android:key="spill"
+            android:summary="@string/summarySpill"
+            android:title="@string/tittelSpill" />
     </PreferenceCategory>
 </PreferenceScreen>

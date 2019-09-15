@@ -1,3 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android preference example</string>
+    <!--Generell-->
+    <string name="tilbake">Tilbake til start</string>
+
+    <!--Første side-->
+    <string name="app_name">s304114mappe1Matte</string>
+    <string name="velkommen">Velkommen til mattespillet Mattemorro!</string>
+    <string name="startspill">Start spill</string>
+    <string name="statistikk">Se statistikk</string>
+    <string name="preferanser">Preferanser</string>
+
+    <!--Spill-->
+    <string name="spill">Spill Mattemorro!</string>
+    <string name="svar">Svar</string>
+
+    <!--Preferanser-->
+    <string name="summarySpraak">Velg språk</string>
+    <string name="hovedTittelSpraak">Språk</string>
+    <string name="tittelSpraak">Språk</string>
+
+    <string name="summarySpill">Velg antall regnestykker</string>
+    <string name="hovedTittelSpill">Spill</string>
+    <string name="tittelSpill">Spillstørrelse</string>
+
+    <string-array name="spraakValg">
+        <item>Norsk</item>
+        <item>Tysk</item>
+    </string-array>
+    <string-array name="spraakVerdier">
+        <item>no</item>
+        <item>de</item>
+    </string-array>
+
+    <string-array name="spillStorrelse">
+        <item>Standard (5)</item>
+        <item>Moderat (10)</item>
+        <item>Viderekommende (25)</item>
+    </string-array>
+    <string-array name="spillStorrelseVerdier">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+    </string-array>
+
+    <!--Statistikk-->
+    <string name="valgStatistikk">Din statistikk</string>
+    <string name="antallRiktig">Antall riktig:</string>
+    <string name="antallFeil">Antall feil:</string>
+    <string name="slettStatistikken">Slett statistikk</string>
 </resources>

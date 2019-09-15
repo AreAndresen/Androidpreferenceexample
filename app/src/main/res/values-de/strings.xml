@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Generell-->
+    <string name="tilbake">Zurück zum start</string>
+
+    <!--Første side-->
+    <string name="app_name">s304114mappe1Matte</string>
+    <string name="velkommen">Willkommen zum Mathe-Spiel Mattemorro!</string>
+    <string name="startspill">Spiel starten</string>
+    <string name="statistikk">Siehe Statistik</string>
+    <string name="preferanser">Voreinstellungen</string>
+
+    <!--Spill-->
+    <string name="spill">Spielen Sie Mattemorro!</string>
+    <string name="svar">Antworten</string>
+
+    <!--Preferanser-->
+    <string name="summarySpraak">Vlach ant regnestucker</string>
+    <string name="hovedTittelSpraak">Sprache</string>
+    <string name="tittelSpraak">Sprache</string>
+
+    <string name="summarySpill">Vlach ant regnestucker</string>
+    <string name="hovedTittelSpill">Spiel</string>
+    <string name="tittelSpill">Spielgröße</string>
+
+    <string-array name="spraakValg">
+        <item>Norwegisch</item>
+        <item>Deutsch</item>
+    </string-array>
+    <string-array name="spraakVerdier">
+        <item>no</item>
+        <item>de</item>
+    </string-array>
+
+    <string-array name="spillStorrelse">
+        <item>Standard (5)</item>
+        <item>Mittel (10)</item>
+        <item>Schwierig (25)</item>
+    </string-array>
+    <string-array name="spillStorrelseVerdier">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+    </string-array>
+
+    <!--Statistikk-->
+    <string name="valgStatistikk">Ihre Statistiken</string>
+    <string name="antallRiktig">Nummer richtig:</string>
+    <string name="antallFeil">Anzahl der Fehler:</string>
+    <string name="slettStatistikken">Statistiken löschen</string>
+</resources>
+
