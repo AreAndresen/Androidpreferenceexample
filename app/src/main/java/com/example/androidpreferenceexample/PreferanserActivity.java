@@ -39,16 +39,17 @@ public class PreferanserActivity extends AppCompatActivity {
             if (key.equals("spraak")) {
                 Preference spraakValg = findPreference(key);
                 //endrer tekst
-                spraakValg.setSummary(sharedPreferences.getString(key, "") + " valgt språk");
+                spraakValg.setSummary(sharedPreferences.getString(key, ""));
 
                 //endrer språk til valgt verdi (no/de)
                 setLocale(sharedPreferences.getString(key, ""));
+
             }
 
             if (key.equals("spill")) {
                 //endrer tekst
                 Preference spillValg = findPreference(key);
-                spillValg.setSummary(sharedPreferences.getString(key, "") + " valgt spill");
+                spillValg.setSummary(sharedPreferences.getString(key, ""));
             }
         }
 
@@ -78,9 +79,6 @@ public class PreferanserActivity extends AppCompatActivity {
                 spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", "") + " das es sprach");
                 spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " ist spiel");
             }
-
-
-
         }
 
         @Override
