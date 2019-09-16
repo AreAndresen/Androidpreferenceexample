@@ -1,5 +1,7 @@
 package com.example.androidpreferenceexample;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -14,6 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
 public class PreferanserActivity extends AppCompatActivity {
+
+
+    String spraakKode;
+    private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +28,23 @@ public class PreferanserActivity extends AppCompatActivity {
         //Load setting fragment
         getFragmentManager().beginTransaction().replace(android.R.id.content,
                 new PrefsFragment()).commit();
-
     }
+
+
+    //restart freagment metode for språkendring
+    public void restartFragment() {
+        recreate();
+        PrefsFragment fragment = new PrefsFragment();
+        getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
+    }
+
+    public String getSpraakKode() {
+        return spraakKode;
+    }
+    public void setSpraakKode(String spraakKode) {
+        this.spraakKode = spraakKode;
+    }
+
 
 
     public static class PrefsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener{
@@ -31,7 +53,10 @@ public class PreferanserActivity extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
+            //loader prefs.xml
             addPreferencesFromResource(R.xml.prefs);
+
         }
 
         @Override
@@ -43,6 +68,13 @@ public class PreferanserActivity extends AppCompatActivity {
 
                 //endrer språk til valgt verdi (no/de)
                 setLocale(sharedPreferences.getString(key, ""));
+
+                //Gir verdien til koden i klassen
+                ((PreferanserActivity)getActivity()).setSpraakKode(sharedPreferences.getString(key,""));
+
+
+                //restarter fragment etter endring av språk
+                ((PreferanserActivity)getActivity()).restartFragment();
 
             }
 
@@ -60,6 +92,16 @@ public class PreferanserActivity extends AppCompatActivity {
             Configuration cf = res.getConfiguration();
             cf.setLocale(new Locale(lang));
             res.updateConfiguration(cf,dm);
+
+        }
+
+
+        public void loadLocale() {
+            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+            Preference spraakValg = findPreference("spraak");
+            String spraakKode = spraakValg.getSharedPreferences().getString("spraak", "");
+
+            setLocale(spraakKode);
         }
 
 
@@ -67,6 +109,8 @@ public class PreferanserActivity extends AppCompatActivity {
         public void onResume() {
             super.onResume();
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+            loadLocale();
 
             Preference spraakValg = findPreference("spraak");
             Preference spillValg = findPreference("spill");
@@ -83,10 +127,54 @@ public class PreferanserActivity extends AppCompatActivity {
 
         @Override
         public void onPause() {
+            loadLocale();
             getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
             super.onPause();
         }
 
+    }
+
+
+    /*advarsel ved tilbake trykk
+    @Override
+    public void onBackPressed() {
+
+        recreate();
+    }*/
+
+    //trenger disse slik at statestikken forblir slettet etter nullstill metoden
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putString(NOKKEL_SPRAAKKODE, spraakKode).apply();
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        spraakKode = getSharedPreferences("APP_INFO",MODE_PRIVATE).getString(NOKKEL_SPRAAKKODE,"");
+    }
+
+
+    //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //husker tall
+        outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    //henter den lagrede informasjonen
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        //restor tall
+        spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
+
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
 

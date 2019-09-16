@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/slettStatistikk"
-        android:layout_width="190dp"
-        android:layout_height="53dp"
+        android:layout_width="211dp"
+        android:layout_height="68dp"
         android:text="@string/slettStatistikken"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

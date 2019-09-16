@@ -2,6 +2,8 @@
 <resources>
     <!--Generell-->
     <string name="tilbake">Tilbake til start</string>
+    <string name="nei">Nei</string>
+    <string name="ja">Avbryt</string>
 
     <!--Første side-->
     <string name="app_name">s304114mappe1Matte</string>
@@ -13,6 +15,36 @@
     <!--Spill-->
     <string name="spill">Spill Mattemorro!</string>
     <string name="svar">Svar</string>
+
+    <!--Spill alert strenger-->
+    <!--visFullførtDialog()-->
+    <string name="spillFullfort">Spill fullført!</string>
+    <string name="fullfortMsg">Du fikk " + antRiktigInt + " riktig og " + antFeilInt + " feil av "+antallFraPref+
+                ".\nPrøv igjen eller gå tilbake til start.</string>
+
+    <!--visAvbrytDialog() -->
+    <string name="avbryt">Avbryt</string>
+    <string name="avbrytMsg">Hvis du abryter mister du all fremgang i spillet. Vil du avbryte?</string>
+    <string name="fortsett">Fortsett spill</string>
+
+    <!--svarKnapp()-->
+    <string name="feilInput">Input må være tall, prøv igjen.</string>
+    <string name="riktigSvar">Riktig!</string>
+    <string name="feilSvar">Feil, svaret er</string>
+
+
+    <!--Statistikk-->
+    <string name="valgStatistikk">Din statistikk</string>
+    <string name="antallRiktig">Antall riktig</string>
+    <string name="antallFeil">Antall feil</string>
+    <string name="slettStatistikken">Slett statistikk</string>
+
+    <!--slettDialog()-->
+    <string name="slettMsg">Vil du slette all lagret statistikk?</string>
+    <string name="avbrotSlettMsg">Du avbrøt</string>
+    <string name="statistikkSlettet">Statistikk slettet</string>
+
+
 
     <!--Preferanser-->
     <string name="summarySpraak">Velg språk</string>
@@ -42,10 +74,4 @@
         <item>10</item>
         <item>25</item>
     </string-array>
-
-    <!--Statistikk-->
-    <string name="valgStatistikk">Din statistikk</string>
-    <string name="antallRiktig">Antall riktig:</string>
-    <string name="antallFeil">Antall feil:</string>
-    <string name="slettStatistikken">Slett statistikk</string>
 </resources>

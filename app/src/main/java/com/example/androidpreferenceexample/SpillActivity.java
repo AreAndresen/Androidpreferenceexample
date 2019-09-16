@@ -6,20 +6,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class SpillActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+
+
     //lagringskode til preferanse
     private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
+    private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
 
     //til spillet
     TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit;
@@ -56,6 +64,7 @@ public class SpillActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.activity_spill);
 
 
@@ -115,12 +124,11 @@ public class SpillActivity extends AppCompatActivity {
     //popup advarsel ved avbryt
     private void visFullførtDialog() {
         AlertDialog.Builder fBuilder = new AlertDialog.Builder(SpillActivity.this);
-        fBuilder.setTitle("Spill fullført!");
+        fBuilder.setTitle(R.string.spillFullfort);
 
-        fBuilder.setMessage("Du fikk " + antRiktigInt + " riktig og " + antFeilInt + " feil av "+antallFraPref+
-                ".\nPrøv igjen eller gå tilbake til start.");
+        fBuilder.setMessage(R.string.fullfortMsg);
 
-        fBuilder.setNegativeButton("Tilbake til start", new DialogInterface.OnClickListener() {
+        fBuilder.setNegativeButton(R.string.tilbake, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //lagrer statistikk -inneholder intent
@@ -138,18 +146,18 @@ public class SpillActivity extends AppCompatActivity {
     //popup advarsel ved avbryt
     private void visAvbrytDialog() {
         AlertDialog.Builder aBuilder = new AlertDialog.Builder(SpillActivity.this);
-        aBuilder.setTitle("Avbryt");
+        aBuilder.setTitle(R.string.avbryt);
 
-        aBuilder.setMessage("Hvis du abryter mister du all fremgang i spillet. Vil du avbryte? ");
+        aBuilder.setMessage(R.string.avbrytMsg);
 
-        aBuilder.setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+        aBuilder.setNegativeButton(R.string.nei, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(),"Fortsett spill",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),R.string.fortsett,Toast.LENGTH_LONG).show();
             }
         });
 
-        aBuilder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+        aBuilder.setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
@@ -170,7 +178,7 @@ public class SpillActivity extends AppCompatActivity {
     //svar metode
     public void svarKnapp() {
         if (svarForsok.getText().toString().equals("")) { //kontrollerer at svar ikke er tom
-            Toast.makeText(SpillActivity.this, "Input må være tall, prøv igjen.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SpillActivity.this, R.string.feilInput, Toast.LENGTH_SHORT).show();
         }
         else {
             //svar fra array
@@ -179,11 +187,13 @@ public class SpillActivity extends AppCompatActivity {
             int brukerSvar = Integer.parseInt(svarForsok.getText().toString());
 
             if (brukerSvar == riktigSvar) {
-                fasit.setText("Riktig!");
+                fasit.setText(R.string.riktigSvar);
                 antRiktigInt++;
             }
             else {
-                fasit.setText("Feil, svaret er " + riktigSvar);
+                String msg = " "+riktigSvar;
+                fasit.setText(R.string.feilSvar);
+                fasit.append(msg); //legger til antall feil
                 antFeilInt++;
             }
             setNewNumbers();
@@ -192,7 +202,6 @@ public class SpillActivity extends AppCompatActivity {
 
     //METODE FOR Å LAGRE RESTULTAT---------
     private void lagreResultat() {
-
         //MINNELAGRING
         //henter fra minne
         int antRiktigIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTRIKTIGINT,0);
@@ -218,7 +227,7 @@ public class SpillActivity extends AppCompatActivity {
         sporsmaalet.setText(matteSpr[indeksR]);
 
 
-        //henter fra disk fra preferansr fragement
+        //henter fra disk fra preferansr fragement - fra preference fragment
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         antallFraPref = Integer.parseInt(sharedPreferences.getString("spill",""));
 
@@ -228,6 +237,22 @@ public class SpillActivity extends AppCompatActivity {
         antallRiktige.setText(String.valueOf(antRiktigInt));
         antallFeil.setText(String.valueOf(antFeilInt));
         svarForsok.setText("");
+    }
+
+    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
+    public void setLocale(String lang) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration cf = res.getConfiguration();
+        cf.setLocale(new Locale(lang));
+        res.updateConfiguration(cf,dm);
+    }
+
+    public void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+        setLocale(spraak);
     }
 
 
@@ -250,6 +275,9 @@ public class SpillActivity extends AppCompatActivity {
 
         outState.putInt(NOKKEL_INDEKSR, indeksR);
 
+        //outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
+
+
         super.onSaveInstanceState(outState);
     }
 
@@ -269,6 +297,8 @@ public class SpillActivity extends AppCompatActivity {
         antFeilInt = savedInstanceState.getInt(NOKKEL_ANTFEILINT);
         antallFraPref = savedInstanceState.getInt(NOKKEL_PREFERANSESPILL);
         indeksR = savedInstanceState.getInt(NOKKEL_INDEKSR);
+
+        //spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
 
         super.onRestoreInstanceState(savedInstanceState);
     }

@@ -2,6 +2,8 @@
 <resources>
     <!--Generell-->
     <string name="tilbake">Zurück zum start</string>
+    <string name="nei">Nein</string>
+    <string name="ja">Stornieren</string>
 
     <!--Første side-->
     <string name="app_name">s304114mappe1Matte</string>
@@ -13,6 +15,35 @@
     <!--Spill-->
     <string name="spill">Spielen Sie Mattemorro!</string>
     <string name="svar">Antworten</string>
+
+    <!--Spill alert strenger-->
+    <!--visFullførtDialog()-->
+    <string name="spillFullfort">Spiele abgeschlossen!</string>
+    <string name="fullfortMsg">Du fikk " + antRiktigInt + " riktig og " + antFeilInt + " feil av "+antallFraPref+
+                ".\nPrøv igjen eller gå tilbake til start.</string>
+
+    <!--visAvbrytDialog() -->
+    <string name="avbryt">Stornieren</string>
+    <string name="avbrytMsg">Wenn Sie abbrechen, verlieren Sie alle Fortschritte im Spiel. Möchten Sie stornieren?</string>
+    <string name="fortsett">Spiel weiter</string>
+
+    <!--svarKnapp()-->
+    <string name="feilInput">Die Eingabe muss aus Zahlen bestehen. Versuchen Sie es erneut.</string>
+    <string name="riktigSvar">Richtig!</string>
+    <string name="feilSvar">Fehler, ist die Antwort</string>
+
+
+    <!--Statistikk-->
+    <string name="valgStatistikk">Ihre Statistiken</string>
+    <string name="antallRiktig">Nummer richtig</string>
+    <string name="antallFeil">Anzahl der Fehler</string>
+    <string name="slettStatistikken">Statistiken löschen</string>
+
+    <!--slettDialog()-->
+    <string name="slettMsg">Alle gespeicherten Statistiken löschen?</string>
+    <string name="avbrotSlettMsg">Du hast unterbrochen</string>
+    <string name="statistikkSlettet">Statistikk slettet</string>
+
 
     <!--Preferanser-->
     <string name="summarySpraak">Vlach ant regnestucker</string>
@@ -42,11 +73,5 @@
         <item>10</item>
         <item>25</item>
     </string-array>
-
-    <!--Statistikk-->
-    <string name="valgStatistikk">Ihre Statistiken</string>
-    <string name="antallRiktig">Nummer richtig:</string>
-    <string name="antallFeil">Anzahl der Fehler:</string>
-    <string name="slettStatistikken">Statistiken löschen</string>
 </resources>
 
