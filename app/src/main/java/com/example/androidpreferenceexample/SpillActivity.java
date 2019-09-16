@@ -31,8 +31,16 @@ public class SpillActivity extends AppCompatActivity {
 
     //til spillet
     TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit;
-    EditText svarForsok;
     Button svarKnapp, avbrytKnapp;
+
+    //ny design
+    Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill, knappMinus;
+    TextView svarFr;
+    private int svarFrInt;
+    private final char minus = '-';
+    private double svarVerdi;
+    private char ACTION;
+
 
     //matte arrayene fra resources
     String[] matteSpr, matteSvar;
@@ -69,8 +77,6 @@ public class SpillActivity extends AppCompatActivity {
 
 
         ////--------VARIABLER -----
-        svarForsok = (EditText) findViewById(R.id.svarForsok);
-
         sporsmaalet = (TextView) findViewById(R.id.sporsmaal);
         fasit = (TextView) findViewById(R.id.fasit);
         tellerSpr = (TextView) findViewById(R.id.antallspr);
@@ -84,13 +90,102 @@ public class SpillActivity extends AppCompatActivity {
         matteSpr = getResources().getStringArray(R.array.matteSpr);
         matteSvar = getResources().getStringArray(R.array.matteSvar);
 
-        //egen metode - MÅ HA EN IF SOM FUNGERER HER ved rotasjon
-        if(indeksR == 0 || indeksR > antallFraPref) {
-            setNewNumbers();
-        }
 
 
         //--------KNAPPER-----
+        knapp0 = (Button)findViewById(R.id.knapp0);
+        knapp1 = (Button)findViewById(R.id.knapp1);
+        knapp2 = (Button)findViewById(R.id.knapp2);
+        knapp3 = (Button)findViewById(R.id.knapp3);
+        knapp4 = (Button)findViewById(R.id.knapp4);
+        knapp5 = (Button)findViewById(R.id.knapp5);
+        knapp6 = (Button)findViewById(R.id.knapp6);
+        knapp7 = (Button)findViewById(R.id.knapp7);
+        knapp8 = (Button)findViewById(R.id.knapp8);
+        knapp9 = (Button)findViewById(R.id.knapp9);
+        knappNullstill = (Button)findViewById(R.id.knappNullstill);
+        knappMinus = (Button)findViewById(R.id.knappMinus);
+        svarFr = (TextView)findViewById(R.id.svarFr);
+        //---slutt design knapper
+
+        knapp0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "0");
+            }
+        });
+        knapp1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "1");
+            }
+        });
+        knapp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "2");
+            }
+        });
+        knapp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "3");
+            }
+        });
+        knapp4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "4");
+            }
+        });
+        knapp5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "5");
+            }
+        });
+        knapp6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "6");
+            }
+        });
+        knapp7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "7");
+            }
+        });
+        knapp8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "8");
+            }
+        });
+        knapp9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(svarFr.getText().toString() + "9");
+            }
+        });
+        knappMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(svarFr == null || svarFr.getText().toString().isEmpty()) { //motvirker bug ved minus etter tall
+
+                    svarFr.setText(svarFr.getText().toString() + minus);
+                }
+            }
+        });
+        knappNullstill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svarFr.setText(null);
+            }
+        });
+
+
+
         //avbryt
         avbrytKnapp = (Button)findViewById(R.id.avbrytKnapp);
         //ved klipp på avbryt - egen popup metode
@@ -118,6 +213,13 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
         //-------- SLUTT KNAPPER-----
+
+
+        //egen metode - MÅ HA EN IF SOM FUNGERER HER ved rotasjon
+        if(indeksR == 0 || indeksR > antallFraPref) {
+            setNewNumbers();
+        }
+
 
     }//utenfor create
 
@@ -177,14 +279,14 @@ public class SpillActivity extends AppCompatActivity {
 
     //svar metode
     public void svarKnapp() {
-        if (svarForsok.getText().toString().equals("")) { //kontrollerer at svar ikke er tom
+        if (svarFr.getText().toString().equals("")) { //kontrollerer at svar ikke er tom
             Toast.makeText(SpillActivity.this, R.string.feilInput, Toast.LENGTH_SHORT).show();
         }
         else {
             //svar fra array
             int riktigSvar = Integer.parseInt(matteSvar[indeksR]);
             //svar fra bruker
-            int brukerSvar = Integer.parseInt(svarForsok.getText().toString());
+            int brukerSvar = Integer.parseInt(svarFr.getText().toString());
 
             if (brukerSvar == riktigSvar) {
                 fasit.setText(R.string.riktigSvar);
@@ -236,7 +338,7 @@ public class SpillActivity extends AppCompatActivity {
         tellerSpr.setText(String.valueOf(antTeller++));
         antallRiktige.setText(String.valueOf(antRiktigInt));
         antallFeil.setText(String.valueOf(antFeilInt));
-        svarForsok.setText("");
+        svarFr.setText(null);
     }
 
     //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
@@ -273,6 +375,8 @@ public class SpillActivity extends AppCompatActivity {
         outState.putInt(NOKKEL_ANTFEILINT, antFeilInt);
         outState.putInt(NOKKEL_PREFERANSESPILL , antallFraPref);
 
+        outState.putInt("SvarFr",svarFrInt);
+
         outState.putInt(NOKKEL_INDEKSR, indeksR);
 
         //outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
@@ -297,6 +401,8 @@ public class SpillActivity extends AppCompatActivity {
         antFeilInt = savedInstanceState.getInt(NOKKEL_ANTFEILINT);
         antallFraPref = savedInstanceState.getInt(NOKKEL_PREFERANSESPILL);
         indeksR = savedInstanceState.getInt(NOKKEL_INDEKSR);
+
+        svarFr.setText((savedInstanceState.getInt("SvarFr")));
 
         //spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
 

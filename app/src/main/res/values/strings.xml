@@ -32,6 +32,9 @@
     <string name="riktigSvar">Riktig!</string>
     <string name="feilSvar">Feil, svaret er</string>
 
+    <!--nullstill knapp-->
+    <string name="nullstillKnapp">Nullstill</string>
+
 
     <!--Statistikk-->
     <string name="valgStatistikk">Din statistikk</string>
