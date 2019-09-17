@@ -23,6 +23,7 @@ public class PreferanserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadLocale();
         super.onCreate(savedInstanceState);
 
         //Load setting fragment
@@ -33,7 +34,8 @@ public class PreferanserActivity extends AppCompatActivity {
 
     //restart freagment metode for språkendring
     public void restartFragment() {
-        recreate();
+        setLocale(getSpraakKode());
+        //recreate();
         PrefsFragment fragment = new PrefsFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
     }
@@ -67,7 +69,7 @@ public class PreferanserActivity extends AppCompatActivity {
                 spraakValg.setSummary(sharedPreferences.getString(key, ""));
 
                 //endrer språk til valgt verdi (no/de)
-                setLocale(sharedPreferences.getString(key, ""));
+                //setLocale(sharedPreferences.getString(key, ""));
 
                 //Gir verdien til koden i klassen
                 ((PreferanserActivity)getActivity()).setSpraakKode(sharedPreferences.getString(key,""));
@@ -85,7 +87,7 @@ public class PreferanserActivity extends AppCompatActivity {
             }
         }
 
-        //metode for endring av språk
+        /*metode for endring av språk
         public void setLocale(String lang) {
             Resources res = getResources();
             DisplayMetrics dm = res.getDisplayMetrics();
@@ -102,7 +104,7 @@ public class PreferanserActivity extends AppCompatActivity {
             String spraakKode = spraakValg.getSharedPreferences().getString("spraak", "");
 
             setLocale(spraakKode);
-        }
+        }*/
 
 
         @Override
@@ -110,7 +112,7 @@ public class PreferanserActivity extends AppCompatActivity {
             super.onResume();
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
-            loadLocale();
+            //loadLocale();
 
             Preference spraakValg = findPreference("spraak");
             Preference spillValg = findPreference("spill");
@@ -127,7 +129,7 @@ public class PreferanserActivity extends AppCompatActivity {
 
         @Override
         public void onPause() {
-            loadLocale();
+            //loadLocale();
             getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
             super.onPause();
         }
@@ -135,12 +137,34 @@ public class PreferanserActivity extends AppCompatActivity {
     }
 
 
-    /*advarsel ved tilbake trykk
+
+    //Trenger denne så intent/main oppdateres på tilbake samt språk
     @Override
     public void onBackPressed() {
+        Intent intent_tilbake = new Intent (PreferanserActivity.this,MainActivity.class);
+        startActivity(intent_tilbake);
+        //finish();
+    }
 
-        recreate();
-    }*/
+    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
+    public void setLocale(String lang) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration cf = res.getConfiguration();
+        cf.setLocale(new Locale(lang));
+        res.updateConfiguration(cf,dm);
+    }
+
+    //DENNE MOTVIRKER SPRÅKENDRING VED ROTASJON
+    public void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+        setLocale(spraak);
+    }
+
+
+
 
     //trenger disse slik at statestikken forblir slettet etter nullstill metoden
     @Override
@@ -159,7 +183,7 @@ public class PreferanserActivity extends AppCompatActivity {
     }
 
 
-    //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
+    /*lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //husker tall
@@ -175,6 +199,6 @@ public class PreferanserActivity extends AppCompatActivity {
         spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
 
         super.onRestoreInstanceState(savedInstanceState);
-    }
+    }*/
 }
 

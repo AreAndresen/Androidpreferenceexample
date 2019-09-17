@@ -17,14 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
 public class SpillActivity extends AppCompatActivity {
-
-    SharedPreferences sharedPreferences;
-
-
     //lagringskode til preferanse
     private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
@@ -36,22 +34,19 @@ public class SpillActivity extends AppCompatActivity {
     //ny design
     Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill, knappMinus;
     TextView svarFr;
-    private int svarFrInt;
     private final char minus = '-';
-    private double svarVerdi;
-    private char ACTION;
-
 
     //matte arrayene fra resources
     String[] matteSpr, matteSvar;
-    int antTeller;
+    //array til lagring av brukte indekser
+    ArrayList<Integer> brukteSpr = new ArrayList<Integer>();
+
+    int antTeller=1;
     int antFeilInt;
     int antRiktigInt;
     int antallFraPref;
-
     int indeksR=0; //autogenerert
 
-    //spesifiserte nøkler for savestat
     //strenger
     private static final String NOKKEL_ANTTELLER = "antTeller_nokkel";
     private static final String NOKKEL_ANTRIKTIG = "antRiktig_nokkel";
@@ -64,15 +59,16 @@ public class SpillActivity extends AppCompatActivity {
     //brukes til overføring av statistikk
     private static final String NOKKEL_ANTRIKTIGINT = "antRiktigINT_nokkel";
     private static final String NOKKEL_ANTFEILINT = "antFeilINT_nokkel";
+    //svarforsøk og brukte nøkler-array
+    private static final String NOKKEL_SVARFR = "svarForsok_nokkel";
+    private static final String NOKKEL_BRUKTARRAY = "bruktArray_nokkel";
 
-    //private static final String NOKKEL_ANTTOTALINT = "antTotalINT_nokkel";
-    //private static final String NOKKEL_SVAR = "svarForsok_nokkel";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+        loadLocale(); //forhindrer at språk går tilbak til default ved rotasjon
         setContentView(R.layout.activity_spill);
 
 
@@ -89,7 +85,6 @@ public class SpillActivity extends AppCompatActivity {
         //-------array svar----
         matteSpr = getResources().getStringArray(R.array.matteSpr);
         matteSvar = getResources().getStringArray(R.array.matteSvar);
-
 
 
         //--------KNAPPER-----
@@ -185,10 +180,14 @@ public class SpillActivity extends AppCompatActivity {
         });
 
 
+        //første generering av spill
+        if(antTeller == 1) {
+            setNewNumbers();
+        }
 
-        //avbryt
+        //avbryt knapp
         avbrytKnapp = (Button)findViewById(R.id.avbrytKnapp);
-        //ved klipp på avbryt - egen popup metode
+        //ved klikk på avbryt - egen popup metode
         avbrytKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,7 +195,7 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
 
-        //svar
+        //svar knapp
         svarKnapp = (Button)findViewById(R.id.svarKnapp);
         //ved klikk svar
         svarKnapp.setOnClickListener(new View.OnClickListener() {
@@ -213,14 +212,6 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
         //-------- SLUTT KNAPPER-----
-
-
-        //egen metode - MÅ HA EN IF SOM FUNGERER HER ved rotasjon
-        if(indeksR == 0 || indeksR > antallFraPref) {
-            setNewNumbers();
-        }
-
-
     }//utenfor create
 
     //popup advarsel ved avbryt
@@ -233,7 +224,7 @@ public class SpillActivity extends AppCompatActivity {
         fBuilder.setNegativeButton(R.string.tilbake, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //lagrer statistikk -inneholder intent
+                //lagrer statistikk
                 lagreResultat();
 
                 Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
@@ -241,7 +232,6 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
         AlertDialog aDialog = fBuilder.create();
-        //show alert dialog
         aDialog.show();
     }
 
@@ -310,8 +300,8 @@ public class SpillActivity extends AppCompatActivity {
         int antFeilIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTFEILINT,0);
 
         //plusser gammel lagring fra minne med nye resultater
-        antFeilInt += antRiktigIntStatistikk;
-        antRiktigInt += antFeilIntStatistikk;
+        antRiktigInt += antRiktigIntStatistikk;
+        antFeilInt += antFeilIntStatistikk;
 
         //Lagring til minne
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt).apply();
@@ -319,26 +309,69 @@ public class SpillActivity extends AppCompatActivity {
         //SLUTT MINNELAGRING
     }
 
+    //sjekkmetode om tall er brukt
+    private boolean sjekkTall(int indeksR) {
+        boolean sjekk = false;
+
+        for (int i : brukteSpr) { //kontrollerer arrayet som har brukte indekser
+            if (i == indeksR) {
+                sjekk = true; //finnes i arrayet
+                break;
+            }
+        }
+        return sjekk;
+    }
+
+    //genererer randomisert tall
+    private int genererRandom() {
+        Random r = new Random();
+        indeksR = r.nextInt(24+1); //[min = 0, max = 24]
+
+        return indeksR;
+    }
+
 
     private void setNewNumbers () {
-        //randomisert spørsmål
-        Random r = new Random();
-        indeksR = r.nextInt(25);
+        //randomiserer første indeks
+        if(indeksR == 0) {
+            indeksR = genererRandom();
+        }
 
-        //Spørsmålet som kommer - henter fra spørsmål-array
-        sporsmaalet.setText(matteSpr[indeksR]);
+        //kontrollerer at generert indeks ikke rer i array fra tidligere
+        Boolean doContinue = true;
+        while (doContinue) {
+            if(!sjekkTall(indeksR)) { //tallet finnes ikke og vi kan hoppe ut
+                doContinue = false;
+            }
+            else {
+                genererRandom(); //genererer på nytt om det finnes
+            }
+        }
+
+        if(!doContinue) {
+            //legger random indeks inn i brukt array til samling
+            brukteSpr.add(indeksR);
+
+            //Spørsmålet som kommer - henter fra spørsmål-array
+            sporsmaalet.setText(matteSpr[indeksR]);
+
+            //henter fra disk fra preferansr fragement - fra preference fragment
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            antallFraPref = Integer.parseInt(sharedPreferences.getString("spill",""));
 
 
-        //henter fra disk fra preferansr fragement - fra preference fragment
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        antallFraPref = Integer.parseInt(sharedPreferences.getString("spill",""));
+            antalletTotal.setText(String.valueOf(antallFraPref));
+            tellerSpr.setText(String.valueOf(antTeller++));
+            antallRiktige.setText(String.valueOf(antRiktigInt));
+            antallFeil.setText(String.valueOf(antFeilInt));
+            svarFr.setText(null);
 
+            String tallbrukt = "";
+            tallbrukt =+ indeksR+" ";
 
-        antalletTotal.setText(String.valueOf(antallFraPref));
-        tellerSpr.setText(String.valueOf(antTeller++));
-        antallRiktige.setText(String.valueOf(antRiktigInt));
-        antallFeil.setText(String.valueOf(antFeilInt));
-        svarFr.setText(null);
+            Toast.makeText(SpillActivity.this, tallbrukt, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
@@ -361,7 +394,6 @@ public class SpillActivity extends AppCompatActivity {
     //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
         //husker strenger
         outState.putString(NOKKEL_ANTTELLER, tellerSpr.getText().toString());
         outState.putString(NOKKEL_ANTRIKTIG, antallRiktige.getText().toString());
@@ -374,13 +406,11 @@ public class SpillActivity extends AppCompatActivity {
         outState.putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt);
         outState.putInt(NOKKEL_ANTFEILINT, antFeilInt);
         outState.putInt(NOKKEL_PREFERANSESPILL , antallFraPref);
-
-        outState.putInt("SvarFr",svarFrInt);
-
         outState.putInt(NOKKEL_INDEKSR, indeksR);
 
-        //outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
-
+        //svar og array
+        outState.putString(NOKKEL_SVARFR,svarFr.getText().toString());
+        outState.putIntegerArrayList(NOKKEL_BRUKTARRAY, brukteSpr);
 
         super.onSaveInstanceState(outState);
     }
@@ -402,13 +432,10 @@ public class SpillActivity extends AppCompatActivity {
         antallFraPref = savedInstanceState.getInt(NOKKEL_PREFERANSESPILL);
         indeksR = savedInstanceState.getInt(NOKKEL_INDEKSR);
 
-        svarFr.setText((savedInstanceState.getInt("SvarFr")));
-
-        //spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
+        //svar og array
+        svarFr.setText((savedInstanceState.getString(NOKKEL_SVARFR)));
+        brukteSpr = savedInstanceState.getIntegerArrayList(NOKKEL_BRUKTARRAY);
 
         super.onRestoreInstanceState(savedInstanceState);
     }
-
-
-
 }
