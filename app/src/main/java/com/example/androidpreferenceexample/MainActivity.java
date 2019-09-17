@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
+    /*lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //husker tall
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //trenger disse slik at statestikken forblir slettet etter nullstill metoden
+    //trenger
     @Override
     protected void onPause(){
         super.onPause();
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
-        spraakKode = getSharedPreferences("APP_INFO",MODE_PRIVATE).getString(NOKKEL_SPRAAKKODE,"");
-    }
+        spraakKode = getSharedPreferences("APP_INFO",MODE_PRIVATE).getString(NOKKEL_SPRAAKKODE,"no");
+    }*/
 
 
 

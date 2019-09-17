@@ -41,7 +41,7 @@ public class SpillActivity extends AppCompatActivity {
     //array til lagring av brukte indekser
     ArrayList<Integer> brukteSpr = new ArrayList<Integer>();
 
-    int antTeller=1;
+    int antTeller = 0;
     int antFeilInt;
     int antRiktigInt;
     int antallFraPref;
@@ -179,9 +179,13 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
 
+        //henter fra disk fra preferansr fragement - fra preference fragment
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        antallFraPref = Integer.parseInt(sharedPreferences.getString("spill","5")); //er her som standard ved ny innstallering
+        antalletTotal.setText(String.valueOf(antallFraPref));
 
         //første generering av spill
-        if(antTeller == 1) {
+        if(antTeller == 0) {
             setNewNumbers();
         }
 
@@ -201,12 +205,13 @@ public class SpillActivity extends AppCompatActivity {
         svarKnapp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //gir alert /avslutt spill ved antall regnestykker
-                if(antTeller < antallFraPref){
+                if(antTeller <= antallFraPref-1){
                     svarKnapp();
                 }
                 else {
                     //oppdaterer siste svar og gir melding om ferdig spill
                     svarKnapp();
+
                     visFullførtDialog();
                 }
             }
@@ -294,19 +299,19 @@ public class SpillActivity extends AppCompatActivity {
 
     //METODE FOR Å LAGRE RESTULTAT---------
     private void lagreResultat() {
-        //MINNELAGRING
-        //henter fra minne
+        //DISKLAGRING
+        //henter fra disk
         int antRiktigIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTRIKTIGINT,0);
         int antFeilIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTFEILINT,0);
 
-        //plusser gammel lagring fra minne med nye resultater
+        //plusser gammel lagring fra disk med nye resultater
         antRiktigInt += antRiktigIntStatistikk;
         antFeilInt += antFeilIntStatistikk;
 
-        //Lagring til minne
+        //Lagring til disk
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt).apply();
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTFEILINT, antFeilInt).apply();
-        //SLUTT MINNELAGRING
+        //SLUTT disklagring
     }
 
     //sjekkmetode om tall er brukt
@@ -333,43 +338,47 @@ public class SpillActivity extends AppCompatActivity {
 
     private void setNewNumbers () {
         //randomiserer første indeks
-        if(indeksR == 0) {
-            indeksR = genererRandom();
-        }
+        if(antTeller < antallFraPref) { //denne er er for å unngå at det genereres enda ett tall i arrayet. Unngår index outofbound
 
-        //kontrollerer at generert indeks ikke rer i array fra tidligere
-        Boolean doContinue = true;
-        while (doContinue) {
-            if(!sjekkTall(indeksR)) { //tallet finnes ikke og vi kan hoppe ut
-                doContinue = false;
+            if(indeksR == 0) {
+                indeksR = genererRandom();
             }
-            else {
-                genererRandom(); //genererer på nytt om det finnes
+
+            //kontrollerer at generert indeks ikke rer i array fra tidligere
+            Boolean doContinue = true;
+            while (doContinue) {
+                if(!sjekkTall(indeksR)) { //tallet finnes ikke og vi kan hoppe ut
+                    doContinue = false;
+                }
+                else {
+                    genererRandom(); //genererer på nytt om det finnes
+                }
+            }
+
+            if(!doContinue) {
+                //legger random indeks inn i brukt array til samling
+                brukteSpr.add(indeksR);
+
+                //Spørsmålet som kommer - henter fra spørsmål-array
+                sporsmaalet.setText(matteSpr[indeksR]);
+
+                tellerSpr.setText(String.valueOf(antTeller++));
+                antallRiktige.setText(String.valueOf(antRiktigInt));
+                antallFeil.setText(String.valueOf(antFeilInt));
+                svarFr.setText(null);
+
+                String tallbrukt = "";
+                tallbrukt =+ indeksR+" ";
+
+                Toast.makeText(SpillActivity.this, tallbrukt, Toast.LENGTH_SHORT).show();
             }
         }
-
-        if(!doContinue) {
-            //legger random indeks inn i brukt array til samling
-            brukteSpr.add(indeksR);
-
-            //Spørsmålet som kommer - henter fra spørsmål-array
-            sporsmaalet.setText(matteSpr[indeksR]);
-
-            //henter fra disk fra preferansr fragement - fra preference fragment
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            antallFraPref = Integer.parseInt(sharedPreferences.getString("spill",""));
-
-
-            antalletTotal.setText(String.valueOf(antallFraPref));
+        else{//oppdaterer siste svar/verdier når spill alert dukker opp, unngår at det dukker opp et ekstra mattestykke man ikke får svar på
             tellerSpr.setText(String.valueOf(antTeller++));
             antallRiktige.setText(String.valueOf(antRiktigInt));
             antallFeil.setText(String.valueOf(antFeilInt));
             svarFr.setText(null);
 
-            String tallbrukt = "";
-            tallbrukt =+ indeksR+" ";
-
-            Toast.makeText(SpillActivity.this, tallbrukt, Toast.LENGTH_SHORT).show();
         }
 
     }
