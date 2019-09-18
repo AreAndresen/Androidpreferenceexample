@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#03A0F4"
-    tools:context=".StatistikkActivity">
+    android:orientation="horizontal">
 
 
     <TextView
@@ -29,10 +28,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <Button
         android:id="@+id/slettStatistikk"
@@ -53,19 +52,21 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <Button
         android:id="@+id/tilbake"
         android:layout_width="215dp"
 
         android:layout_height="79dp"
+        android:layout_marginTop="40dp"
         android:background="#03E0F4"
+
+
         android:fontFamily="@font/slackey"
-
-
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
@@ -73,68 +74,71 @@
         android:text="@string/tilbake"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
 
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintTop_toBottomOf="@+id/slettStatistikk"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/antallRiktige"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginEnd="184dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginEnd="71dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
+
         android:shadowDy="9"
         android:shadowRadius="9"
 
         android:text="@string/antallRiktig"
+
         android:textAlignment="center"
 
         android:textColor="#FFFFFF"
-
         android:textSize="22sp"
-
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/totalAntRiktig"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234" />
+        app:layout_constraintVertical_bias="0.384" />
 
     <TextView
         android:id="@+id/antallFeil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginEnd="180dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="156dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#C52525"
-        android:shadowDx="9"
-        android:shadowDy="9"
-        android:shadowRadius="9"
 
+        android:shadowColor="#C52525"
+
+        android:shadowDx="9"
+
+        android:shadowDy="9"
+
+        android:shadowRadius="9"
         android:text="@string/antallFeil"
 
         android:textAlignment="center"
-
         android:textColor="#FFFFFF"
-
         android:textSize="22sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintEnd_toStartOf="@+id/totalAntFeil"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintTop_toBottomOf="@+id/antallRiktige"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/totalAntRiktig"
@@ -143,24 +147,24 @@
         android:layout_width="123dp"
 
         android:layout_height="31dp"
-        android:layout_marginStart="252dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="0"
+
         android:textColor="#FFFFFF"
 
         android:textSize="22sp"
-
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <TextView
         android:id="@+id/totalAntFeil"
@@ -168,7 +172,6 @@
 
         android:layout_height="31dp"
 
-        android:layout_marginStart="216dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
@@ -182,8 +185,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintVertical_bias="0.576" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

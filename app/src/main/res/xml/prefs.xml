@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <PreferenceCategory
+        android:fontFamily="@font/slackey"
+        android:textStyle="bold"
+        android:background="#03A0F4"
         android:summary="Språkinformasjon"
         android:title="@string/hovedTittelSpraak" >
         <ListPreference
@@ -12,6 +17,7 @@
             android:title="@string/tittelSpraak" />
     </PreferenceCategory>
     <PreferenceCategory
+        android:background="#03A0F4"
         android:summary="Spillinformasjon"
         android:title="@string/hovedTittelSpill" >
         <ListPreference

@@ -14,14 +14,14 @@
         android:layout_width="356dp"
         android:layout_height="84dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/slackey"
+
         android:text="@string/velkommen"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
         android:textColor="#FCFCFC"
         android:textSize="30sp"
-
-
+        android:fontFamily="@font/slackey"
         android:textStyle="bold"
         android:shadowColor="#C52525"
         android:shadowRadius="13"
@@ -40,10 +40,12 @@
         android:layout_width="270dp"
         android:layout_height="73dp"
         android:layout_marginTop="56dp"
-        android:background="#03E0F4"
-        android:fontFamily="@font/slackey"
+
+
         android:text="@string/startspill"
 
+        android:background="#03E0F4"
+        android:fontFamily="@font/slackey"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:shadowColor="#C52525"

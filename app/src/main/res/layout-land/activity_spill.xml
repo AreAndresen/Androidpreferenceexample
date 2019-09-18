@@ -87,7 +87,7 @@
 
         android:layout_marginTop="96dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#000000"
         android:shadowDx="9"
 
         android:shadowDy="9"
@@ -111,7 +111,7 @@
         android:layout_marginBottom="240dp"
 
         android:fontFamily="@font/slackey"
-        android:shadowColor="#C52525"
+        android:shadowColor="#000000"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -132,7 +132,7 @@
 
         android:layout_marginBottom="200dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#000000"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -175,7 +175,7 @@
 
         android:layout_marginTop="17dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#C52525"
+        android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -241,7 +241,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/slackey"
 
-        android:shadowColor="#C52525"
+        android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
 
