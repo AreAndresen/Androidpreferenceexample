@@ -65,17 +65,20 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/slackey"
 
+        android:text="fasit"
+
 
         android:shadowColor="#004496"
         android:shadowDx="9"
 
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
+
+
         android:textStyle="bold"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -85,75 +88,77 @@
 
     <TextView
         android:id="@+id/totalAntall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
 
 
+        android:layout_marginStart="200dp"
         android:fontFamily="@font/slackey"
-
 
         android:shadowColor="#004496"
         android:shadowDx="9"
 
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:text="25"
         android:textColor="#FFFFFF"
         android:textSize="26sp"
+
+
         android:textStyle="bold"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.217" />
 
     <TextView
         android:id="@+id/antallspr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
 
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="184dp"
 
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
         android:shadowDy="9"
-
         android:shadowRadius="9"
+        android:text="25"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/antFeilltxt"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalAntall"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/sporsmaal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="146dp"
+        android:layout_height="33dp"
 
-        android:layout_marginStart="144dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.399" />
 
     <Button
         android:id="@+id/avbrytKnapp"
@@ -183,8 +188,8 @@
 
     <TextView
         android:id="@+id/antRiktig"
-        android:layout_width="57dp"
-        android:layout_height="19dp"
+        android:layout_width="65dp"
+        android:layout_height="18dp"
 
         android:layout_marginStart="88dp"
         android:layout_marginTop="12dp"
@@ -193,35 +198,40 @@
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:text="2"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/antFeil"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/antRiktigtxt"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/antFeil"
-        android:layout_width="54dp"
-        android:layout_height="18dp"
+        android:layout_width="82dp"
+        android:layout_height="19dp"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="11dp"
 
+        android:layout_marginBottom="480dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
         android:shadowDy="9"
-        android:shadowRadius="9"
 
+        android:shadowRadius="9"
+        android:text="4"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/antFeilltxt"
         app:layout_constraintVertical_bias="0.0" />
@@ -244,11 +254,11 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintHorizontal_bias="0.482"
 
         app:layout_constraintStart_toEndOf="@+id/totalAntall"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <TextView
         android:id="@+id/antRiktigtxt"
@@ -268,9 +278,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/antallspr"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <Button
         android:id="@+id/knapp1"
@@ -567,7 +578,7 @@
         android:layout_width="150dp"
         android:layout_height="33dp"
 
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="136dp"
         android:fontFamily="@font/slackey"
 
         android:hint="@string/dittSvar"
@@ -576,12 +587,15 @@
         android:shadowDy="9"
 
         android:shadowRadius="9"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.465" />
 

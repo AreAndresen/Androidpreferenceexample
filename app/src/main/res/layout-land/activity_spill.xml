@@ -59,24 +59,25 @@
     <TextView
         android:id="@+id/fasit"
         android:layout_width="199dp"
+
+
         android:layout_height="28dp"
-
-
-        android:layout_marginStart="344dp"
+        android:layout_marginStart="324dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
-        android:shadowDx="9"
 
+        android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="fasit"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintVertical_bias="0.232" />
 
     <TextView
         android:id="@+id/totalAntall"
@@ -115,13 +116,14 @@
         android:shadowDy="9"
         android:shadowRadius="9"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fasit" />
+        app:layout_constraintTop_toBottomOf="@+id/fasit"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/sporsmaal"
@@ -135,6 +137,7 @@
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -542,8 +545,8 @@
 
     <TextView
         android:id="@+id/svarFr"
-        android:layout_width="150dp"
-        android:layout_height="33dp"
+        android:layout_width="121dp"
+        android:layout_height="32dp"
 
         android:layout_marginTop="9dp"
         android:layout_marginBottom="168dp"
@@ -554,13 +557,14 @@
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sporsmaal"
         app:layout_constraintVertical_bias="0.0" />
