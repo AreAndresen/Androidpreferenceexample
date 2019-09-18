@@ -32,7 +32,7 @@ public class PreferanserActivity extends AppCompatActivity {
     }
 
 
-    //restart freagment metode for språkendring
+    //restart freagment metode for språkendring fortløpende
     public void restartFragment() {
         setLocale(getSpraakKode());
         //recreate();

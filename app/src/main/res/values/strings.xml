@@ -7,13 +7,14 @@
 
     <!--Første side-->
     <string name="app_name">s304114mappe1Matte</string>
-    <string name="velkommen">Velkommen til mattespillet Mattemorro!</string>
+    <string name="velkommen">Velkommen til Mattemorro!</string>
     <string name="startspill">Start spill</string>
     <string name="statistikk">Se statistikk</string>
     <string name="preferanser">Preferanser</string>
 
     <!--Spill-->
     <string name="spill">Spill Mattemorro!</string>
+    <string name="dittSvar">Ditt svar...</string>
     <string name="svar">Svar</string>
 
     <!--Spill alert strenger-->

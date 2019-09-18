@@ -179,10 +179,12 @@ public class SpillActivity extends AppCompatActivity {
             }
         });
 
+
         //henter fra disk fra preferansr fragement - fra preference fragment
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         antallFraPref = Integer.parseInt(sharedPreferences.getString("spill","5")); //er her som standard ved ny innstallering
         antalletTotal.setText(String.valueOf(antallFraPref));
+
 
         //første generering av spill
         if(antTeller == 0) {
