@@ -48,7 +48,7 @@
         android:fontFamily="@font/slackey"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:shadowColor="#C52525"
+        android:shadowColor="#004496"
         android:shadowRadius="9"
         android:shadowDy="9"
         android:shadowDx="9"

@@ -3,6 +3,7 @@ package com.example.androidpreferenceexample;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -214,7 +215,7 @@ public class SpillActivity extends AppCompatActivity {
                     //oppdaterer siste svar og gir melding om ferdig spill
                     svarKnapp();
 
-                    visFullførtDialog();
+                    visFullførtDialog2();
                 }
             }
         });
@@ -241,6 +242,31 @@ public class SpillActivity extends AppCompatActivity {
         AlertDialog aDialog = fBuilder.create();
         aDialog.show();
     }
+
+    private void visFullførtDialog2() {
+        final Dialog dialog = new Dialog(SpillActivity.this);
+
+        dialog.setContentView(R.layout.egendialog);
+
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+
+
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lagreResultat();
+
+                Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
+                startActivity(intent_spill);
+            }
+        });
+        dialog.show();
+    }
+
+
 
     //popup advarsel ved avbryt
     private void visAvbrytDialog() {
