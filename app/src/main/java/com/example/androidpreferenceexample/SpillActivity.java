@@ -243,15 +243,12 @@ public class SpillActivity extends AppCompatActivity {
         aDialog.show();
     }
 
+    //egendefinert dialog
     private void visFullførtDialog2() {
         final Dialog dialog = new Dialog(SpillActivity.this);
 
-        dialog.setContentView(R.layout.egendialog);
-
-
+        dialog.setContentView(R.layout.egendialog); //setter egen layout her
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-
-
 
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {
