@@ -38,152 +38,150 @@
         android:id="@+id/slettStatistikk"
         android:layout_width="215dp"
         android:layout_height="79dp"
+
+
+        android:layout_marginTop="336dp"
         android:background="#03E0F4"
-
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/slettStatistikken"
+
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <Button
         android:id="@+id/tilbake"
         android:layout_width="215dp"
 
         android:layout_height="79dp"
+
+
+        android:layout_marginTop="39dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-
-
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/tilbake"
+
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintTop_toBottomOf="@+id/slettStatistikk"
+        app:layout_constraintVertical_bias="0.018" />
 
     <TextView
         android:id="@+id/antallRiktige"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="357dp"
+        android:layout_height="29dp"
 
-        android:layout_marginEnd="184dp"
+        android:layout_marginTop="132dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
-        android:shadowRadius="9"
 
+        android:shadowRadius="9"
         android:text="@string/antallRiktig"
+
         android:textAlignment="center"
 
         android:textColor="#FFFFFF"
 
         android:textSize="22sp"
-
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/antallFeil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="355dp"
+        android:layout_height="29dp"
 
-        android:layout_marginEnd="180dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
+
         android:shadowDy="9"
+
         android:shadowRadius="9"
 
         android:text="@string/antallFeil"
 
         android:textAlignment="center"
-
         android:textColor="#FFFFFF"
 
         android:textSize="22sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.38" />
 
     <TextView
         android:id="@+id/totalAntRiktig"
 
 
-        android:layout_width="123dp"
+        android:layout_width="356dp"
+        android:layout_height="34dp"
 
-        android:layout_height="31dp"
-        android:layout_marginStart="252dp"
+        android:layout_marginTop="9dp"
+
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="0"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-
         android:textSize="22sp"
-
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24" />
+        app:layout_constraintTop_toBottomOf="@+id/antallRiktige"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/totalAntFeil"
-        android:layout_width="123dp"
+        android:layout_width="356dp"
+        android:layout_height="34dp"
 
-        android:layout_height="31dp"
-
-        android:layout_marginStart="216dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="0"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-
         android:textSize="22sp"
-
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintTop_toBottomOf="@+id/antallFeil"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
