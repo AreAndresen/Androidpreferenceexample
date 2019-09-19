@@ -42,17 +42,17 @@
         android:layout_marginTop="56dp"
 
 
-        android:text="@string/startspill"
-
         android:background="#03E0F4"
+
         android:fontFamily="@font/slackey"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
         android:shadowColor="#004496"
-        android:shadowRadius="9"
-        android:shadowDy="9"
         android:shadowDx="9"
-        android:textSize="24sp"
+        android:shadowDy="9"
+        android:shadowRadius="9"
+        android:text="@string/startspill"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -66,15 +66,15 @@
         android:layout_marginTop="60dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
+        android:shadowColor="#004496"
+        android:shadowDx="9"
+        android:shadowDy="9"
+
+        android:shadowRadius="9"
         android:text="@string/statistikk"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
-
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:shadowColor="#004496"
-        android:shadowRadius="9"
-        android:shadowDy="9"
-        android:shadowDx="9"
 
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,16 +89,16 @@
         android:layout_marginTop="60dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
+        android:shadowColor="#004496"
+        android:shadowDx="9"
+        android:shadowDy="9"
+
+
+        android:shadowRadius="9"
         android:text="@string/preferanser"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
-
-
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:shadowColor="#004496"
-        android:shadowRadius="9"
-        android:shadowDy="9"
-        android:shadowDx="9"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
