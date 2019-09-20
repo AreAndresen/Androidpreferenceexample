@@ -120,7 +120,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="44dp"
@@ -190,12 +190,12 @@
 
     <TextView
         android:id="@+id/antRiktig"
-        android:layout_width="82dp"
-        android:layout_height="19dp"
+        android:layout_width="132dp"
+        android:layout_height="25dp"
 
-        android:layout_marginStart="76dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="95dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="29dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -208,20 +208,18 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sporsmaal"
-        app:layout_constraintEnd_toStartOf="@+id/antFeil"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/antallspr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/antRiktigtxt" />
 
     <TextView
         android:id="@+id/antFeil"
-        android:layout_width="82dp"
-        android:layout_height="19dp"
+        android:layout_width="135dp"
+        android:layout_height="25dp"
 
-        android:layout_marginStart="94dp"
-
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="29dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
@@ -235,7 +233,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sporsmaal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/antRiktig"
+        app:layout_constraintStart_toEndOf="@+id/antallspr"
         app:layout_constraintTop_toBottomOf="@+id/antFeilltxt" />
 
     <TextView
@@ -272,7 +270,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="121dp"
 
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -534,7 +532,7 @@
         app:layout_constraintStart_toEndOf="@+id/avbrytKnapp"
         app:layout_constraintTop_toBottomOf="@+id/knapp8" />
 
-    <Button
+    <!--<Button
         android:id="@+id/knappMinus"
         android:layout_width="70dp"
         android:layout_height="38dp"
@@ -555,7 +553,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
         android:id="@+id/knappNullstill"

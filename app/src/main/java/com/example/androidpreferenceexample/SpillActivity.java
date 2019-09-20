@@ -100,7 +100,7 @@ public class SpillActivity extends AppCompatActivity {
         knapp8 = (Button)findViewById(R.id.knapp8);
         knapp9 = (Button)findViewById(R.id.knapp9);
         knappNullstill = (Button)findViewById(R.id.knappNullstill);
-        knappMinus = (Button)findViewById(R.id.knappMinus);
+        //knappMinus = (Button)findViewById(R.id.knappMinus);
         svarFr = (TextView)findViewById(R.id.svarFr);
         //---slutt design knapper
 
@@ -164,7 +164,7 @@ public class SpillActivity extends AppCompatActivity {
                 svarFr.setText(svarFr.getText().toString() + "9");
             }
         });
-        knappMinus.setOnClickListener(new View.OnClickListener() {
+        /*knappMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(svarFr == null || svarFr.getText().toString().isEmpty()) { //motvirker bug ved minus etter tall
@@ -172,7 +172,7 @@ public class SpillActivity extends AppCompatActivity {
                     svarFr.setText(svarFr.getText().toString() + minus);
                 }
             }
-        });
+        });*/
         knappNullstill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

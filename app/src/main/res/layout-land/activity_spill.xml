@@ -12,49 +12,51 @@
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="195dp"
+
+
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginBottom="344dp"
         android:fontFamily="@font/slackey"
-
-
         android:shadowColor="#C52525"
-        android:shadowDx="13"
 
+        android:shadowDx="13"
         android:shadowDy="13"
         android:shadowRadius="13"
         android:text="@string/spill"
         android:textColor="#FCFCFC"
         android:textSize="30sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/svarKnapp"
-        android:layout_width="120dp"
-        android:layout_height="56dp"
+        android:layout_width="172dp"
+        android:layout_height="47dp"
 
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="92dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-
         android:shadowColor="#C52525"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/svar"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svarFr" />
+        app:layout_constraintEnd_toStartOf="@+id/antFeil"
+        app:layout_constraintStart_toEndOf="@+id/knapp0"
+        app:layout_constraintTop_toBottomOf="@+id/svarFr"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/fasit"
@@ -62,10 +64,13 @@
 
 
         android:layout_height="28dp"
-        android:layout_marginStart="324dp"
+
+        android:layout_marginStart="298dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
-
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -74,63 +79,70 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/antallspr"
+        app:layout_constraintEnd_toStartOf="@+id/totalAntall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintTop_toBottomOf="@+id/textview" />
 
     <TextView
         android:id="@+id/totalAntall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
 
 
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#000000"
-        android:shadowDx="9"
 
+        android:shadowColor="#000000"
+
+        android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:text="25"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="26sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/antRiktigtxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/antallspr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="183dp"
+        android:layout_height="32dp"
 
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="240dp"
-
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#000000"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:text="25"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fasit"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/sporsmaal"
+        app:layout_constraintEnd_toStartOf="@+id/antRiktigtxt"
+        app:layout_constraintStart_toEndOf="@+id/knapp3"
+        app:layout_constraintTop_toBottomOf="@+id/fasit" />
 
     <TextView
         android:id="@+id/sporsmaal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="183dp"
+        android:layout_height="32dp"
 
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#000000"
         android:shadowDx="9"
@@ -141,20 +153,20 @@
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/antallspr"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/svarFr"
+        app:layout_constraintEnd_toStartOf="@+id/antRiktig"
+        app:layout_constraintStart_toEndOf="@+id/knapp6"
+        app:layout_constraintTop_toBottomOf="@+id/antallspr" />
 
     <Button
         android:id="@+id/avbrytKnapp"
-        android:layout_width="97dp"
-        android:layout_height="42dp"
+        android:layout_width="110dp"
+        android:layout_height="41dp"
 
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="52dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -163,108 +175,118 @@
         android:shadowRadius="9"
         android:text="@string/avbryt"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/knappNullstill"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/knapp0" />
 
     <TextView
         android:id="@+id/antRiktig"
-        android:layout_width="57dp"
-        android:layout_height="19dp"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
 
-        android:layout_marginTop="17dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/antFeilltxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/antRiktigtxt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/sporsmaal"
+        app:layout_constraintTop_toBottomOf="@+id/antRiktigtxt" />
 
     <TextView
         android:id="@+id/antFeil"
-        android:layout_width="54dp"
-        android:layout_height="18dp"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="107dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
         android:shadowDy="9"
-
         android:shadowRadius="9"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/antFeilltxt"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintStart_toEndOf="@+id/svarKnapp"
+        app:layout_constraintTop_toBottomOf="@+id/antFeilltxt" />
 
     <TextView
         android:id="@+id/antFeilltxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
 
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
-
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/antallFeil"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/antFeil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/antRiktig"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/svarFr"
+        app:layout_constraintTop_toBottomOf="@+id/antRiktig" />
 
     <TextView
         android:id="@+id/antRiktigtxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/slackey"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
 
+        android:layout_marginStart="21dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
-
         android:shadowRadius="9"
         android:text="@string/antallRiktig"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/antRiktig"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintStart_toEndOf="@+id/antallspr"
+        app:layout_constraintTop_toBottomOf="@+id/totalAntall" />
 
     <Button
         android:id="@+id/knapp1"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="272dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="3dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -273,50 +295,48 @@
         android:shadowRadius="7"
         android:text="1"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/knapp4"
         app:layout_constraintEnd_toStartOf="@+id/knapp2"
-        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/knapp2"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
 
-        android:layout_marginBottom="272dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="3dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="7"
-
         android:shadowDy="7"
         android:shadowRadius="7"
         android:text="2"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/knapp5"
         app:layout_constraintEnd_toStartOf="@+id/knapp3"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/knapp1"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/knapp3"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginStart="232dp"
-        android:layout_marginBottom="272dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="3dp"
         android:background="#03E0F4"
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="7"
@@ -326,21 +346,23 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/knapp6"
+        app:layout_constraintEnd_toStartOf="@+id/antallspr"
+        app:layout_constraintStart_toEndOf="@+id/knapp2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/knapp4"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="64dp"
+
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-
         android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
@@ -349,20 +371,21 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/knapp7"
         app:layout_constraintEnd_toStartOf="@+id/knapp5"
-        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/knapp1" />
 
     <Button
         android:id="@+id/knapp5"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
         android:background="#03E0F4"
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="7"
@@ -372,24 +395,22 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/knapp8"
         app:layout_constraintEnd_toStartOf="@+id/knapp6"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/knapp4"
         app:layout_constraintTop_toBottomOf="@+id/knapp2" />
 
     <Button
         android:id="@+id/knapp6"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginStart="232dp"
-
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="6dp"
         android:background="#03E0F4"
-
         android:fontFamily="@font/slackey"
-
         android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
@@ -398,23 +419,44 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/knapp3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/knapp9"
+        app:layout_constraintEnd_toStartOf="@+id/sporsmaal"
+        app:layout_constraintStart_toEndOf="@+id/knapp5"
+        app:layout_constraintTop_toBottomOf="@+id/knapp3" />
 
-    <Button
-        android:id="@+id/knapp7"
+    <!--<Button
+        android:id="@+id/knappMinus"
         android:layout_width="70dp"
         android:layout_height="38dp"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="386dp"
+        android:layout_marginEnd="275dp"
 
-        android:layout_marginEnd="80dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
+        android:shadowDx="7"
+        android:shadowDy="7"
+        android:shadowRadius="7"
+        android:text="-"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="357dp" />-->
 
+    <Button
+        android:id="@+id/knapp7"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
+
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#03E0F4"
+        android:fontFamily="@font/slackey"
+        android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
         android:shadowRadius="7"
@@ -422,21 +464,21 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/knapp8"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintEnd_toStartOf="@+id/knapp8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/knapp4" />
 
     <Button
         android:id="@+id/knapp8"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-
         android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
@@ -446,90 +488,65 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/knapp9"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/knapp7"
         app:layout_constraintTop_toBottomOf="@+id/knapp5" />
 
     <Button
         android:id="@+id/knapp9"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginStart="232dp"
-
-        android:layout_marginTop="16dp"
-
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="26dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
-
         android:shadowRadius="7"
-
         android:text="9"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/svarFr"
+        app:layout_constraintStart_toEndOf="@+id/knapp8"
         app:layout_constraintTop_toBottomOf="@+id/knapp6" />
 
     <Button
         android:id="@+id/knapp0"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
 
-        android:layout_marginTop="15dp"
-
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="81dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
         android:shadowDx="7"
         android:shadowDy="7"
-
         android:shadowRadius="7"
         android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/knappMinus"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/svarKnapp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/knapp8" />
-
-    <Button
-        android:id="@+id/knappMinus"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
-
-        android:layout_marginStart="232dp"
-
-        android:layout_marginTop="16dp"
-        android:background="#03E0F4"
-        android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
-        android:shadowDx="7"
-
-        android:shadowDy="7"
-        android:shadowRadius="7"
-        android:text="-"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/knapp9" />
+        app:layout_constraintTop_toBottomOf="@+id/knapp8"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/knappNullstill"
-        android:layout_width="106dp"
-        android:layout_height="38dp"
+        android:layout_width="110dp"
+        android:layout_height="41dp"
 
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="52dp"
         android:background="#03E0F4"
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
@@ -537,36 +554,36 @@
         android:shadowRadius="9"
         android:text="@string/nullstillKnapp"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/knapp0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/knapp7" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/svarKnapp"
+        app:layout_constraintStart_toEndOf="@+id/avbrytKnapp"
+        app:layout_constraintTop_toBottomOf="@+id/knapp0" />
 
     <TextView
         android:id="@+id/svarFr"
-        android:layout_width="121dp"
+        android:layout_width="183dp"
         android:layout_height="32dp"
 
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="6dp"
         android:fontFamily="@font/slackey"
         android:hint="@string/dittSvar"
-
         android:shadowColor="#004496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sporsmaal"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/svarKnapp"
+        app:layout_constraintEnd_toStartOf="@+id/antFeilltxt"
+        app:layout_constraintStart_toEndOf="@+id/knapp9"
+        app:layout_constraintTop_toBottomOf="@+id/sporsmaal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
