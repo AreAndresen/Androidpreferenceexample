@@ -89,6 +89,7 @@ public class PreferanserFragment extends AppCompatActivity {
 
             Preference spraakValg = findPreference("spraak");
             Preference spillValg = findPreference("spill");
+            spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " er valgt spill");
 
             if(spraakValg.equals("no")) {
                 spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", "") + " er valgt språk");
@@ -98,6 +99,11 @@ public class PreferanserFragment extends AppCompatActivity {
                 spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", "") + " das es sprach");
                 spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " ist spiel");
             }
+
+
+            spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " er valgt spill");
+
+
         }
 
         @Override
