@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PreferanserActivity"
+            android:name=".PreferanserFragment"
             android:parentActivityName=".MainActivity"
             android:configChanges="locale"
             />

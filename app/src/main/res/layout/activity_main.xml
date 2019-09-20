@@ -102,7 +102,7 @@
         android:shadowRadius="9"
         android:text="@string/preferanser"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
 
         app:layout_constraintBottom_toBottomOf="parent"

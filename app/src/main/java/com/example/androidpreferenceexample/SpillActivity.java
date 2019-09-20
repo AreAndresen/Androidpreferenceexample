@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,7 +24,25 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class SpillActivity extends AppCompatActivity {
+public class SpillActivity extends AppCompatActivity implements EgenDialogFragment.DialogClickListener,AvbrytDialogFragment.DialogClickListener {
+
+    Button visValg;
+    TextView textPrefs;
+
+    //Dialog
+    @Override
+    public void onYesClick() {
+        finish();
+    }
+
+    @Override
+    public void onNoClick() {
+        return;
+    }
+
+
+
+    //slutt dialog
     //lagringskode til preferanse
     private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
@@ -214,15 +233,19 @@ public class SpillActivity extends AppCompatActivity {
                 else {
                     //oppdaterer siste svar og gir melding om ferdig spill
                     svarKnapp();
+                    visFullførtDialog();
 
-                    visFullførtDialog2();
                 }
             }
         });
         //-------- SLUTT KNAPPER-----
+
     }//utenfor create
 
-    //popup advarsel ved avbryt
+
+
+
+    /*popup advarsel ved avbryt
     private void visFullførtDialog() {
         AlertDialog.Builder fBuilder = new AlertDialog.Builder(SpillActivity.this);
         fBuilder.setTitle(R.string.spillFullfort);
@@ -241,11 +264,16 @@ public class SpillActivity extends AppCompatActivity {
         });
         AlertDialog aDialog = fBuilder.create();
         aDialog.show();
-    }
+    }*/
 
     //egendefinert dialog
-    private void visFullførtDialog2() {
-        final Dialog dialog = new Dialog(SpillActivity.this);
+    private void visFullførtDialog() {
+
+        DialogFragment dialog = new EgenDialogFragment();
+        dialog.show(getFragmentManager(), "Avslutt");
+        lagreResultat();
+
+        /*final Dialog dialog = new Dialog(SpillActivity.this);
 
         dialog.setContentView(R.layout.egendialog); //setter egen layout her
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
@@ -258,14 +286,21 @@ public class SpillActivity extends AppCompatActivity {
 
                 Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
                 startActivity(intent_spill);
+                finish();
             }
         });
-        dialog.show();
+        dialog.show();*/
     }
 
 
-
     //popup advarsel ved avbryt
+    private void visAvbrytDialog() {
+        DialogFragment dialog = new AvbrytDialogFragment();
+        dialog.show(getFragmentManager(), "Avslutt");
+    }
+
+
+    /*popup advarsel ved avbryt
     private void visAvbrytDialog() {
         AlertDialog.Builder aBuilder = new AlertDialog.Builder(SpillActivity.this);
         aBuilder.setTitle(R.string.avbryt);
@@ -289,7 +324,7 @@ public class SpillActivity extends AppCompatActivity {
 
         AlertDialog aDialog = aBuilder.create();
         aDialog.show();
-    }
+    }*/
 
     //advarsel ved tilbake trykk
     @Override

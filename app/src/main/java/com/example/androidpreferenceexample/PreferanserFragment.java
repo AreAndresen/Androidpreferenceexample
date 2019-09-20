@@ -1,13 +1,11 @@
 package com.example.androidpreferenceexample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.util.DisplayMetrics;
 
@@ -15,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class PreferanserActivity extends AppCompatActivity {
+public class PreferanserFragment extends AppCompatActivity {
 
 
     String spraakKode;
@@ -56,8 +54,8 @@ public class PreferanserActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-            //loader prefs.xml
-            addPreferencesFromResource(R.xml.prefs);
+            //loader preferanser.xmler.xml
+            addPreferencesFromResource(R.xml.preferanser);
 
         }
 
@@ -72,11 +70,11 @@ public class PreferanserActivity extends AppCompatActivity {
                 //setLocale(sharedPreferences.getString(key, ""));
 
                 //Gir verdien til koden i klassen
-                ((PreferanserActivity)getActivity()).setSpraakKode(sharedPreferences.getString(key,""));
+                ((PreferanserFragment)getActivity()).setSpraakKode(sharedPreferences.getString(key,""));
 
 
                 //restarter fragment etter endring av språk
-                ((PreferanserActivity)getActivity()).restartFragment();
+                ((PreferanserFragment)getActivity()).restartFragment();
 
             }
 
@@ -141,7 +139,7 @@ public class PreferanserActivity extends AppCompatActivity {
     //Trenger denne så intent/main oppdateres på tilbake samt språk
     @Override
     public void onBackPressed() {
-        Intent intent_tilbake = new Intent (PreferanserActivity.this,MainActivity.class);
+        Intent intent_tilbake = new Intent (PreferanserFragment.this,MainActivity.class);
         startActivity(intent_tilbake);
         //finish();
     }
