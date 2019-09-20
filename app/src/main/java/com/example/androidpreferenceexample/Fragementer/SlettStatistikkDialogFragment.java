@@ -1,14 +1,14 @@
-package com.example.androidpreferenceexample;
+package com.example.androidpreferenceexample.Fragementer;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class AvbrytDialogFragment extends DialogFragment {
+import com.example.androidpreferenceexample.R;
+
+public class SlettStatistikkDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
@@ -26,11 +26,10 @@ public class AvbrytDialogFragment extends DialogFragment {
         }
     }
 
-
     //kode som lager selve dialogboksen
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity()).setTitle(R.string.avbryt).setMessage(R.string.avbrytMsg).
+        return new AlertDialog.Builder(getActivity()).setTitle(R.string.slettStatistikken).setMessage(R.string.slettMsg).
                 setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton){
                         callback.onYesClick();

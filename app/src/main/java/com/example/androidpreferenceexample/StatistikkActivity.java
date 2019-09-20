@@ -3,6 +3,7 @@ package com.example.androidpreferenceexample;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,9 +16,26 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidpreferenceexample.Fragementer.SlettStatistikkDialogFragment;
+
 import java.util.Locale;
 
-public class StatistikkActivity extends AppCompatActivity {
+public class StatistikkActivity extends AppCompatActivity implements SlettStatistikkDialogFragment.DialogClickListener {
+
+
+    //SlettStatistikk Dialog knapper
+    @Override
+    public void onYesClick() {
+        nullStill();
+        Toast.makeText(getApplicationContext(),R.string.statistikkSlettet,Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
+    public void onNoClick() {
+        Toast.makeText(getApplicationContext(),R.string.avbrotSlettMsg,Toast.LENGTH_LONG).show();
+        return;
+    }
 
     //brukes til overføring av statistikk
     private static final String NOKKEL_ANTRIKTIGINT = "antRiktigINT_nokkel";
@@ -29,7 +47,6 @@ public class StatistikkActivity extends AppCompatActivity {
 
     Button tilbakeKnapp, slettStatistikkKnapp;
     TextView totalAntR, totalAntF;
-    int antFeilFraSpill,antRiktigFraSpill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +55,20 @@ public class StatistikkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistikk);
 
 
-        //riktig/feil output
+        //antall riktig/feil output
         totalAntR = (TextView) findViewById(R.id.totalAntRiktig);
         totalAntF = (TextView) findViewById(R.id.totalAntFeil);
 
         //setter antallet i statistikk
         setNewNumbers();
 
-        //avbryt
+        //avbryt knapp
         tilbakeKnapp = (Button)findViewById(R.id.tilbake);
-        //slett
+        //slett knapp
         slettStatistikkKnapp = (Button)findViewById(R.id.slettStatistikk);
 
-        //klikk tilbake til start etter valg
+
+        //tilbake listener
         tilbakeKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,19 +76,24 @@ public class StatistikkActivity extends AppCompatActivity {
                 startActivity(intent_spill);
             }
         });
-
-        //slett statistikk
+        //slett listener
         slettStatistikkKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                slettDialog();
+                slettDialog2();
             }
         });
-
-
     }
 
-    //popup advarsel ved avbryt
+
+    //popup advarsel ved avbryt ved bruk av dialog fragment
+    private void slettDialog2() {
+        DialogFragment dialog = new SlettStatistikkDialogFragment();
+        dialog.show(getFragmentManager(), "Avslutt");
+    }
+
+
+    /*popup advarsel ved avbryt
     private void slettDialog() {
         AlertDialog.Builder aBuilder = new AlertDialog.Builder(StatistikkActivity.this);
         aBuilder.setTitle(R.string.slettStatistikken);
@@ -81,7 +104,6 @@ public class StatistikkActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(),R.string.avbrotSlettMsg,Toast.LENGTH_LONG).show();
-                //dialogInterface.cancel();
             }
         });
 
@@ -97,7 +119,7 @@ public class StatistikkActivity extends AppCompatActivity {
         AlertDialog aDialog = aBuilder.create();
         //show alert dialog
         aDialog.show();
-    }
+    }*/
 
 
     private void setNewNumbers () {

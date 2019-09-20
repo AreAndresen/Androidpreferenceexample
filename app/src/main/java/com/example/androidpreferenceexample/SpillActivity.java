@@ -1,12 +1,8 @@
 package com.example.androidpreferenceexample;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,21 +11,20 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidpreferenceexample.Fragementer.AvbrytDialogFragment;
+import com.example.androidpreferenceexample.Fragementer.FullfortSpillDialogFragment;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class SpillActivity extends AppCompatActivity implements EgenDialogFragment.DialogClickListener,AvbrytDialogFragment.DialogClickListener {
+public class SpillActivity extends AppCompatActivity implements FullfortSpillDialogFragment.DialogClickListener, AvbrytDialogFragment.DialogClickListener {
 
-    Button visValg;
-    TextView textPrefs;
 
-    //Dialog
+    //Dialog knapper
     @Override
     public void onYesClick() {
         finish();
@@ -41,8 +36,6 @@ public class SpillActivity extends AppCompatActivity implements EgenDialogFragme
     }
 
 
-
-    //slutt dialog
     //lagringskode til preferanse
     private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
@@ -269,13 +262,13 @@ public class SpillActivity extends AppCompatActivity implements EgenDialogFragme
     //egendefinert dialog
     private void visFullførtDialog() {
 
-        DialogFragment dialog = new EgenDialogFragment();
+        DialogFragment dialog = new FullfortSpillDialogFragment();
         dialog.show(getFragmentManager(), "Avslutt");
         lagreResultat();
 
         /*final Dialog dialog = new Dialog(SpillActivity.this);
 
-        dialog.setContentView(R.layout.egendialog); //setter egen layout her
+        dialog.setContentView(R.layout.fullfortspilldialog); //setter egen layout her
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
         // if button is clicked, close the custom dialog
