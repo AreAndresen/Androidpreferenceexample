@@ -88,14 +88,11 @@
         android:layout_width="357dp"
         android:layout_height="29dp"
 
-        android:layout_marginTop="124dp"
-
         android:layout_marginEnd="40dp"
 
         android:fontFamily="@font/slackey"
 
         android:shadowColor="#004496"
-
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -106,37 +103,35 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.991"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.295" />
 
     <TextView
         android:id="@+id/antallFeil"
         android:layout_width="355dp"
         android:layout_height="29dp"
 
-        android:fontFamily="@font/slackey"
+        android:layout_marginTop="44dp"
 
+        android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
 
         android:shadowDx="9"
-
         android:shadowDy="9"
-
         android:shadowRadius="9"
         android:text="@string/antallFeil"
-
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintTop_toBottomOf="@+id/totalAntRiktig"
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
         android:id="@+id/totalAntRiktig"
@@ -186,7 +181,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.994"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/antallFeil"
         app:layout_constraintVertical_bias="0.0" />
