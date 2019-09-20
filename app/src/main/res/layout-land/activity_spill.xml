@@ -164,9 +164,8 @@
         android:layout_height="41dp"
 
         android:layout_marginStart="39dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="52dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -180,7 +179,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/knappNullstill"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/knapp0" />
+        app:layout_constraintTop_toBottomOf="@+id/knapp7"
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/antRiktig"
@@ -285,8 +285,7 @@
 
         android:layout_marginStart="64dp"
         android:layout_marginTop="110dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="10dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -297,7 +296,6 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/knapp4"
         app:layout_constraintEnd_toStartOf="@+id/knapp2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -307,11 +305,10 @@
         android:layout_width="61dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
 
         android:layout_marginTop="110dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="10dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -322,7 +319,6 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/knapp5"
         app:layout_constraintEnd_toStartOf="@+id/knapp3"
         app:layout_constraintStart_toEndOf="@+id/knapp1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -332,10 +328,9 @@
         android:layout_width="61dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="110dp"
         android:layout_marginEnd="26dp"
-        android:layout_marginBottom="3dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -346,7 +341,6 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/knapp6"
         app:layout_constraintEnd_toStartOf="@+id/antallspr"
         app:layout_constraintStart_toEndOf="@+id/knapp2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -358,9 +352,9 @@
 
         android:layout_marginStart="64dp"
 
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -381,10 +375,10 @@
         android:layout_width="61dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -399,30 +393,6 @@
         app:layout_constraintEnd_toStartOf="@+id/knapp6"
         app:layout_constraintStart_toEndOf="@+id/knapp4"
         app:layout_constraintTop_toBottomOf="@+id/knapp2" />
-
-    <Button
-        android:id="@+id/knapp6"
-        android:layout_width="61dp"
-        android:layout_height="36dp"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="6dp"
-        android:background="#03E0F4"
-        android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
-        android:shadowDx="7"
-        android:shadowDy="7"
-        android:shadowRadius="7"
-        android:text="6"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/knapp9"
-        app:layout_constraintEnd_toStartOf="@+id/sporsmaal"
-        app:layout_constraintStart_toEndOf="@+id/knapp5"
-        app:layout_constraintTop_toBottomOf="@+id/knapp3" />
 
     <!--<Button
         android:id="@+id/knappMinus"
@@ -447,13 +417,37 @@
         tools:layout_editor_absoluteY="357dp" />-->
 
     <Button
+        android:id="@+id/knapp6"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="10dp"
+        android:background="#03E0F4"
+        android:fontFamily="@font/slackey"
+        android:shadowColor="#004496"
+        android:shadowDx="7"
+        android:shadowDy="7"
+        android:shadowRadius="7"
+        android:text="6"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/knapp9"
+        app:layout_constraintEnd_toStartOf="@+id/sporsmaal"
+        app:layout_constraintStart_toEndOf="@+id/knapp5"
+        app:layout_constraintTop_toBottomOf="@+id/knapp3" />
+
+    <Button
         android:id="@+id/knapp7"
         android:layout_width="61dp"
         android:layout_height="36dp"
 
         android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -473,10 +467,10 @@
         android:layout_width="61dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
 
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#004496"
@@ -496,8 +490,8 @@
         android:layout_width="61dp"
         android:layout_height="36dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="26dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
@@ -519,7 +513,7 @@
         android:layout_height="36dp"
 
         android:layout_marginStart="138dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="81dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
@@ -543,9 +537,8 @@
         android:layout_height="41dp"
 
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="52dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
@@ -559,7 +552,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/svarKnapp"
         app:layout_constraintStart_toEndOf="@+id/avbrytKnapp"
-        app:layout_constraintTop_toBottomOf="@+id/knapp0" />
+        app:layout_constraintTop_toBottomOf="@+id/knapp9"
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/svarFr"
