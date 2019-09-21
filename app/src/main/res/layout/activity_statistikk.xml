@@ -17,7 +17,6 @@
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="13"
-
         android:shadowDy="13"
         android:shadowRadius="13"
         android:text="@string/valgStatistikk"
@@ -26,7 +25,6 @@
         android:textColor="#FCFCFC"
         android:textSize="30sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -38,8 +36,6 @@
         android:id="@+id/slettStatistikk"
         android:layout_width="215dp"
         android:layout_height="79dp"
-
-
         android:layout_marginTop="336dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
@@ -48,7 +44,6 @@
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/slettStatistikken"
-
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -61,10 +56,7 @@
     <Button
         android:id="@+id/tilbake"
         android:layout_width="215dp"
-
         android:layout_height="79dp"
-
-
         android:layout_marginTop="39dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
@@ -73,7 +65,6 @@
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/tilbake"
-
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -87,20 +78,15 @@
         android:id="@+id/antallRiktige"
         android:layout_width="346dp"
         android:layout_height="34dp"
-
         android:layout_marginTop="132dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
-
         android:shadowRadius="9"
         android:text="@string/antallRiktig"
-
         android:textAlignment="center"
-
         android:textColor="#FFFFFF"
-
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,20 +100,14 @@
         android:id="@+id/antallFeil"
         android:layout_width="352dp"
         android:layout_height="35dp"
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
         android:shadowDx="9"
-
         android:shadowDy="9"
-
         android:shadowRadius="9"
-
         android:text="@string/antallFeil"
-
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,13 +119,9 @@
 
     <TextView
         android:id="@+id/totalAntRiktig"
-
-
         android:layout_width="356dp"
         android:layout_height="34dp"
-
         android:layout_marginTop="9dp"
-
         android:fontFamily="@font/slackey"
         android:shadowColor="#001496"
         android:shadowDx="9"
@@ -166,7 +142,6 @@
         android:id="@+id/totalAntFeil"
         android:layout_width="356dp"
         android:layout_height="34dp"
-
         android:layout_marginTop="12dp"
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
@@ -184,5 +159,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/antallFeil"
         app:layout_constraintVertical_bias="0.0" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
