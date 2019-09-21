@@ -260,23 +260,34 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
             Toast.makeText(SpillActivity.this, R.string.feilInput, Toast.LENGTH_SHORT).show();
         }
         else {
-            //svar fra array
-            int riktigSvar = Integer.parseInt(matteSvar[indeksR]);
-            //svar fra bruker
-            int brukerSvar = Integer.parseInt(svarFr.getText().toString());
+            try { //benytter en try her for å fange exceptions under hvis bruker taster inn for mange tall
 
-            if (brukerSvar == riktigSvar) {
-                fasit.setText(R.string.riktigSvar);
-                antRiktigInt++;
+                //svar fra array
+                long riktigSvar = Integer.parseInt(matteSvar[indeksR]);
+                //svar fra bruker
+                long brukerSvar = Integer.parseInt(svarFr.getText().toString());
+                if (brukerSvar == riktigSvar) {
+                    fasit.setText(R.string.riktigSvar);
+                    antRiktigInt++;
+                }
+                else {
+                    String msg = " "+riktigSvar;
+                    fasit.setText(R.string.feilSvar);
+                    fasit.append(msg); //legger til hva riktig svar var
+                    antFeilInt++;
+                }
+                //setter oppsettet på nytt
+                setOppsett ();
             }
-            else {
+            //slår inn hvis bruker prøver å tase inn for mange tall
+            catch (NumberFormatException e) {
+                long riktigSvar = Integer.parseInt(matteSvar[indeksR]);
                 String msg = " "+riktigSvar;
                 fasit.setText(R.string.feilSvar);
                 fasit.append(msg); //legger til hva riktig svar var
-                antFeilInt++;
+
+                setOppsett ();
             }
-            //setter oppsettet på nytt
-            setOppsett ();
         }
     }
 

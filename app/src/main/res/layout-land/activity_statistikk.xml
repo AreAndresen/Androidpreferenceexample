@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A0F4"
+    android:background="#0377F4"
     android:orientation="horizontal">
 
 
@@ -41,7 +41,7 @@
 
 
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -67,7 +67,7 @@
 
 
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -92,14 +92,14 @@
 
         android:fontFamily="@font/slackey"
 
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="@string/antallRiktig"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +124,7 @@
         android:text="@string/antallFeil"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,14 +143,14 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="0"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +177,7 @@
         android:text="0"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

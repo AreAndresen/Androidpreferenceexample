@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.util.DisplayMetrics;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.androidpreferenceexample.MainActivity;
 import com.example.androidpreferenceexample.R;
 
@@ -19,27 +17,31 @@ import java.util.Locale;
 public class PreferanserFragment extends AppCompatActivity {
 
     String spraakKode;
+    //--------LAGRINGSKODER--------
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        loadLocale();
         super.onCreate(savedInstanceState);
+        //--------OPPDATERER SPÅKLOCAL FØR INNHOLDET BLIR SATT--------
+        getLocale();
 
-        //Loader preferanser fragment
+
+        //--------LOADER FRAGMENTT--------
         getFragmentManager().beginTransaction().replace(android.R.id.content,
-                new PrefsFragment()).commit();
+                new PreferansrFragment()).commit();
     }
 
 
-    //restart fragmentmetode for språkendring fortløpende ved endring
+    //--------RESTARTER FRAGMENTET - BRUKES VED SPRÅKENDRING--------
     public void restartFragment() {
         setLocale(getSpraakKode());
-        PrefsFragment fragment = new PrefsFragment();
+        PreferansrFragment fragment = new PreferansrFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
     }
 
-    //get/set for å hente kode fra fragment
+    //--------GET/SET FOR Å OVERFØRE SPRÅKODE--------
     public String getSpraakKode() {
         return spraakKode;
     }
@@ -49,39 +51,40 @@ public class PreferanserFragment extends AppCompatActivity {
 
 
 
-    public static class PrefsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener{
-
-        //private static SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
+    //-------FRAGMENTET STARTER---------
+    public static class PreferansrFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener{
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-            //loader preferanser.xmler.xml
+            //-------LOADER PREFERANSER.XMl---------
             addPreferencesFromResource(R.xml.preferanser);
 
         }
 
+
+        //-------LYTTER ETTER ENDRING GJORT I FRAGMENTET---------
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            //språkendring
             if (key.equals("spraak")) {
-                Preference spraakValg = findPreference(key);
-                //endrer summarytekst ved endring
-                spraakValg.setSummary(sharedPreferences.getString(key, ""));
 
                 //Gir verdien til koden i klassen
                 ((PreferanserFragment)getActivity()).setSpraakKode(sharedPreferences.getString(key,""));
 
-                //restarter fragment etter endring av språk for å se virkning av språkendring
+                //restarter fragment etter endring av språk fortløpende ved språkendring
                 ((PreferanserFragment)getActivity()).restartFragment();
             }
+            //spillendring
             if (key.equals("spill")) {
-                //endrer tekst
+                //endrer antall spill fortløpende ved endring
                 Preference spillValg = findPreference(key);
                 spillValg.setSummary(sharedPreferences.getString(key, ""));
             }
         }
 
-        //metode for å endre summary når et valg er utført i prferanser
+
+        //-------ENDRER SUMMARY FORTLØPENDE VED RESUME NÅR VALG ER UTFØRT---------
         @Override
         public void onResume() {
             super.onResume();
@@ -89,64 +92,56 @@ public class PreferanserFragment extends AppCompatActivity {
 
             Preference spraakValg = findPreference("spraak");
             Preference spillValg = findPreference("spill");
-            spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " er valgt spill");
 
-            if(spraakValg.equals("no")) {
-                spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", "") + " er valgt språk");
-                spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " er valgt spill");
-            }
-            if(spraakValg.equals("de")) {
-                spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", "") + " das es sprach");
-                spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " ist spiel");
-            }
-
-
-            spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", "") + " er valgt spill");
-
-
+            //Oppdaterer summary ved spill/språk
+            spraakValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spraak", ""));
+            spillValg.setSummary(getPreferenceScreen().getSharedPreferences().getString("spill", ""));
         }
+
 
         @Override
         public void onPause() {
-            //loadLocale();
             getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
             super.onPause();
         }
 
     }
+    //-------FRAGMENTET SLUTTER---------
 
 
-    //Trenger denne så intent/main oppdateres på tilbake samt språk
+
+    //-------TILBAKEKNAPP - OPPDATERER INTENT FOR Å OPPDATERE SPRÅKENDRING---------
     @Override
     public void onBackPressed() {
         Intent intent_tilbake = new Intent (PreferanserFragment.this, MainActivity.class);
         startActivity(intent_tilbake);
     }
 
-    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
-    public void setLocale(String lang) {
+
+    //-------SETTER SPRÅK LOCALE---------
+    public void setLocale(String spraak) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration cf = res.getConfiguration();
-        cf.setLocale(new Locale(lang));
+        cf.setLocale(new Locale(spraak));
         res.updateConfiguration(cf,dm);
     }
 
-    //DENNE MOTVIRKER SPRÅKENDRING TIL DEFAULT VED ROTASJON
-    public void loadLocale() {
-        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
-        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+    //-------GETTER SPRÅK LOCALE---------
+    public void getLocale() {
+        SharedPreferences preferanser = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = preferanser.getString(NOKKEL_SPRAAKKODE,"");
 
         setLocale(spraak);
     }
 
 
 
-    //trenger disse slik at statestikken forblir slettet etter nullstill metoden
+    //-------LAGRER SPRÅKENRDRING VED RETUR TIL MAIN-------
     @Override
     protected void onPause(){
         super.onPause();
-
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putString(NOKKEL_SPRAAKKODE, spraakKode).apply();
 
     }

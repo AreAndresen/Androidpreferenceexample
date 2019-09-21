@@ -20,8 +20,6 @@
     <!--Spill alert strenger-->
     <!--visFullførtDialog()-->
     <string name="spillFullfort">Spill fullført!</string>
-    <string name="fullfortMsg">Du fikk " + antRiktigInt + " riktig og " + antFeilInt + " feil av "+antallFraPref+
-                ".\nPrøv igjen eller gå tilbake til start.</string>
 
     <!--visAvbrytDialog() -->
     <string name="avbryt">Avbryt</string>
@@ -51,13 +49,11 @@
 
 
     <!--Preferanser-->
-    <string name="summarySpraak">Velg språk</string>
     <string name="hovedTittelSpraak">Språk</string>
-    <string name="tittelSpraak">Språk</string>
+    <string name="tittelSpraak">Velg språk</string>
 
-    <string name="summarySpill">Velg antall regnestykker</string>
-    <string name="hovedTittelSpill">Spill</string>
-    <string name="tittelSpill">Spillstørrelse</string>
+    <string name="hovedTittelSpill">Spillstørrelse</string>
+    <string name="tittelSpill">Velg antall regnestykker</string>
 
     <string-array name="spraakValg">
         <item>Norsk</item>

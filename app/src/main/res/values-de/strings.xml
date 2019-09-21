@@ -20,8 +20,7 @@
     <!--Spill alert strenger-->
     <!--visFullførtDialog()-->
     <string name="spillFullfort">Spiele abgeschlossen!</string>
-    <string name="fullfortMsg">Du fikk " + antRiktigInt + " riktig og " + antFeilInt + " feil av "+antallFraPref+
-                ".\nPrøv igjen eller gå tilbake til start.</string>
+
 
     <!--visAvbrytDialog() -->
     <string name="avbryt">Stornieren</string>
@@ -31,15 +30,15 @@
     <!--svarKnapp()-->
     <string name="feilInput">Die Eingabe muss aus Zahlen bestehen. Versuchen Sie es erneut.</string>
     <string name="riktigSvar">Richtig!</string>
-    <string name="feilSvar">Fehler, ist die Antwort</string>
+    <string name="feilSvar">Fehler, antwort ist</string>
 
     <!--nullstill knapp-->
     <string name="nullstillKnapp">Rücksetzenr</string>
 
     <!--Statistikk-->
     <string name="valgStatistikk">Ihre Statistiken</string>
-    <string name="antallRiktig">Richtig:</string>
-    <string name="antallFeil">Fehler:</string>
+    <string name="antallRiktig">Richtig</string>
+    <string name="antallFeil">Fehler</string>
     <string name="slettStatistikken">Statistiken löschen</string>
 
     <!--slettDialog()-->
@@ -49,13 +48,11 @@
 
 
     <!--Preferanser-->
-    <string name="summarySpraak">Vlach ant regnestucker</string>
     <string name="hovedTittelSpraak">Sprache</string>
-    <string name="tittelSpraak">Sprache</string>
+    <string name="tittelSpraak">Wähle deine Sprache</string>
 
-    <string name="summarySpill">Vlach ant regnestucker</string>
-    <string name="hovedTittelSpill">Spiel</string>
-    <string name="tittelSpill">Spielgröße</string>
+    <string name="hovedTittelSpill">Spielgröße</string>
+    <string name="tittelSpill">Vlach ant regnestucker</string>
 
     <string-array name="spraakValg">
         <item>Norwegisch</item>

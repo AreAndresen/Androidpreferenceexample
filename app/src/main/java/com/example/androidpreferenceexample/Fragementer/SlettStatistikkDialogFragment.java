@@ -41,5 +41,4 @@ public class SlettStatistikkDialogFragment extends DialogFragment {
                 })
                 .create();
     }
-
 }

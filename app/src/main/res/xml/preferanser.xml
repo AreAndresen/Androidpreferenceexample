@@ -8,7 +8,7 @@
             android:entries="@array/spraakValg"
             android:entryValues="@array/spraakVerdier"
             android:key="spraak"
-            android:summary="@string/summarySpraak"
+            android:summary="@string/tittelSpraak"
             android:title="@string/tittelSpraak" />
     </PreferenceCategory>
     <PreferenceCategory
@@ -18,7 +18,7 @@
             android:entries="@array/spillStorrelse"
             android:entryValues="@array/spillStorrelseVerdier"
             android:key="spill"
-            android:summary="@string/summarySpill"
+            android:summary="@string/tittelSpill"
             android:title="@string/tittelSpill" />
     </PreferenceCategory>
 </PreferenceScreen>

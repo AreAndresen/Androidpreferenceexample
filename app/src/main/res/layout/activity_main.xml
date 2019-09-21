@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout2"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#03A0F4"
+    android:background="#0377F4"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -45,7 +45,7 @@
         android:background="#03E0F4"
 
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -69,7 +69,7 @@
         android:layout_marginTop="60dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
 
@@ -94,7 +94,7 @@
         android:layout_marginTop="60dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
 

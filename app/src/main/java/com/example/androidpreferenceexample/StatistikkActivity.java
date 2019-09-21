@@ -28,7 +28,6 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
     public void jaClick() {
         nullStill();
         Toast.makeText(getApplicationContext(),R.string.statistikkSlettet,Toast.LENGTH_LONG).show();
-        finish();
     }
 
     @Override

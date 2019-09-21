@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#03A0F4"
+    android:background="#0377F4"
     tools:context=".StatistikkActivity">
 
 
@@ -43,7 +43,7 @@
         android:layout_marginTop="336dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -68,7 +68,7 @@
         android:layout_marginTop="39dp"
         android:background="#03E0F4"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
@@ -85,12 +85,12 @@
 
     <TextView
         android:id="@+id/antallRiktige"
-        android:layout_width="357dp"
-        android:layout_height="29dp"
+        android:layout_width="346dp"
+        android:layout_height="34dp"
 
         android:layout_marginTop="132dp"
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
 
@@ -101,18 +101,19 @@
 
         android:textColor="#FFFFFF"
 
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/antallFeil"
-        android:layout_width="355dp"
-        android:layout_height="29dp"
+        android:layout_width="352dp"
+        android:layout_height="35dp"
 
         android:fontFamily="@font/slackey"
         android:shadowColor="#C52525"
@@ -127,7 +128,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
 
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,14 +147,14 @@
         android:layout_marginTop="9dp"
 
         android:fontFamily="@font/slackey"
-        android:shadowColor="#004496"
+        android:shadowColor="#001496"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
         android:text="0"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +176,7 @@
         android:text="0"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
