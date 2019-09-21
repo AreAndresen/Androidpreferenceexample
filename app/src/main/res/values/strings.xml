@@ -39,8 +39,8 @@
 
     <!--Statistikk-->
     <string name="valgStatistikk">Din statistikk</string>
-    <string name="antallRiktig">Antall riktig:</string>
-    <string name="antallFeil">Antall feil:</string>
+    <string name="antallRiktig">Riktig</string>
+    <string name="antallFeil">Feil</string>
     <string name="slettStatistikken">Slett statistikk</string>
 
     <!--slettDialog()-->

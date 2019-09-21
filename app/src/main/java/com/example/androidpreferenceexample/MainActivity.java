@@ -18,22 +18,31 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button spillKnapp;
-    Button statistikkKnapp;
-    Button preferanserKnapp;
-    String spraakKode;
+    //--------KNAPPER-------
+    Button spillKnapp, statistikkKnapp, preferanserKnapp;
 
+    //--------LAGRINGSKODE--------
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
 
+
+    //-------CREATE STARTER---------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+        //--------OPPDATERER SPÅKLOCAL FØR INNHOLDET BLIR SATT--------
+        getLocale();
+
         setContentView(R.layout.activity_main);
 
 
-        //spill knapp
+        //--------KNAPPER--------
         spillKnapp = findViewById(R.id.startspill);
+        statistikkKnapp = findViewById(R.id.statistikk);
+        preferanserKnapp = findViewById(R.id.preferanser);
+        //--------SLUTT KNAPPER--------
+
+
+        //--------LISTENERS--------
         spillKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_startspill);
             }
         });
-
-        //statistikk knapp
-        statistikkKnapp = findViewById(R.id.statistikk);
         statistikkKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_statistikk);
             }
         });
-
-        //preferanser knapp
-        preferanserKnapp = findViewById(R.id.preferanser);
         preferanserKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,67 +64,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_preferanser);
             }
         });
+        //--------SLUTT LISTENERS--------
     }
+    //-------CREATE SLUTTER---------
 
 
-
-
-    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
-    public void setLocale(String lang) {
+    //-------SETTER SPRÅK LOCALE---------
+    public void setLocale(String spraak) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration cf = res.getConfiguration();
-        cf.setLocale(new Locale(lang));
+        cf.setLocale(new Locale(spraak));
         res.updateConfiguration(cf,dm);
     }
 
-    public void loadLocale() {
-        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
-        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+    //-------GETTER SPRÅK LOCALE---------
+    public void getLocale() {
+        SharedPreferences preferanser = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = preferanser.getString(NOKKEL_SPRAAKKODE,"");
 
         setLocale(spraak);
     }
-
-
-
-    /*lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //husker tall
-        outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
-
-        super.onSaveInstanceState(outState);
-    }
-
-    //henter den lagrede informasjonen
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState){
-        //restor tall
-        spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
-
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-
-
-
-
-    //trenger
-    @Override
-    protected void onPause(){
-        super.onPause();
-
-        getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putString(NOKKEL_SPRAAKKODE, spraakKode).apply();
-
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        spraakKode = getSharedPreferences("APP_INFO",MODE_PRIVATE).getString(NOKKEL_SPRAAKKODE,"no");
-    }*/
-
-
-
 }

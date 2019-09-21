@@ -14,8 +14,8 @@ public class AvbrytDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
-        public void onYesClick();
-        public void onNoClick();
+        public void jaClick();
+        public void neiClick();
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,12 +34,12 @@ public class AvbrytDialogFragment extends DialogFragment {
         return new AlertDialog.Builder(getActivity()).setTitle(R.string.avbryt).setMessage(R.string.avbrytMsg).
                 setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton){
-                        callback.onYesClick();
+                        callback.jaClick();
                     }
                 })
                 .setNegativeButton(R.string.nei,new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton){
-                        callback.onNoClick();
+                        callback.neiClick();
                     }
                 })
                 .create();

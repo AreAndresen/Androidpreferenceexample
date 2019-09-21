@@ -157,24 +157,5 @@ public class PreferanserFragment extends AppCompatActivity {
 
         spraakKode = getSharedPreferences("APP_INFO",MODE_PRIVATE).getString(NOKKEL_SPRAAKKODE,"");
     }
-
-
-    /*lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //husker tall
-        outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
-
-        super.onSaveInstanceState(outState);
-    }
-
-    //henter den lagrede informasjonen
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState){
-        //restor tall
-        spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
-
-        super.onRestoreInstanceState(savedInstanceState);
-    }*/
 }
 

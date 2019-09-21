@@ -24,42 +24,43 @@ import java.util.Random;
 public class SpillActivity extends AppCompatActivity implements FullfortSpillDialogFragment.DialogClickListener, AvbrytDialogFragment.DialogClickListener {
 
 
-    //Dialog knapper
+    //--------DIALOG KNAPPER TIL FULLFORTSPILLDIALOGFRAGMENT--------
     @Override
-    public void onYesClick() {
+    public void fullfortSpillClick() {
+        lagreResultat(); //lagrer ved klikk fullført
+        finish();
+    }
+
+    //--------DIALOG KNAPPER TIL AVBRYTDIALOGFRAGMENT--------
+    @Override
+    public void jaClick() {
         finish();
     }
 
     @Override
-    public void onNoClick() {
+    public void neiClick() {
+        Toast.makeText(getApplicationContext(),R.string.fortsett,Toast.LENGTH_LONG).show();
         return;
     }
 
 
-    //lagringskode til preferanse
-    private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
-    private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
+    //--------VIWES--------
+    TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit,  svarFr;
 
-    //til spillet
-    TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit;
-    Button svarKnapp, avbrytKnapp;
+    //--------KNAPPER--------
+    Button svarKnapp, avbrytKnapp, knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill;
 
-    //ny design
-    Button knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill, knappMinus;
-    TextView svarFr;
-    private final char minus = '-';
-
-    //matte arrayene fra resources
+    //--------ARRAYS FRA RESOURCE--------
     String[] matteSpr, matteSvar;
-    //array til lagring av brukte indekser
+
+    //--------ARRAYS TIL LAGRING AV BRUKTE INDEKSER--------
     ArrayList<Integer> brukteSpr = new ArrayList<Integer>();
 
-    int antTeller = 0;
-    int antFeilInt;
-    int antRiktigInt;
-    int antallFraPref;
-    int indeksR=0; //autogenerert
+    //--------DIV TALL OG INDEKSER--------
+    int antTeller = 0, antFeilInt, antRiktigInt, antallFraPref, indeksR=0; //autogenereres senere
 
+
+    //--------LAGRINGSKODER--------
     //strenger
     private static final String NOKKEL_ANTTELLER = "antTeller_nokkel";
     private static final String NOKKEL_ANTRIKTIG = "antRiktig_nokkel";
@@ -69,38 +70,44 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
     //tall
     private static final String NOKKEL_INDEKSR= "indeksR_nokkel";
     private static final String NOKKEL_ANTTELLERINT = "antTellerINT_nokkel";
-    //brukes til overføring av statistikk
     private static final String NOKKEL_ANTRIKTIGINT = "antRiktigINT_nokkel";
     private static final String NOKKEL_ANTFEILINT = "antFeilINT_nokkel";
     //svarforsøk og brukte nøkler-array
     private static final String NOKKEL_SVARFR = "svarForsok_nokkel";
     private static final String NOKKEL_BRUKTARRAY = "bruktArray_nokkel";
+    //preferanser
+    private static final String NOKKEL_PREFERANSESPILL = "preferanseSpill_nokkel";
+    private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
 
 
-
+    //-------CREATE STARTER---------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale(); //forhindrer at språk går tilbak til default ved rotasjon
+        //--------OPPDATERER SPÅKLOCAL FØR INNHOLDET BLIR SATT--------
+        getLocale();
+
         setContentView(R.layout.activity_spill);
 
 
-        ////--------VARIABLER -----
+        //--------OUTPUT--------
         sporsmaalet = (TextView) findViewById(R.id.sporsmaal);
         fasit = (TextView) findViewById(R.id.fasit);
         tellerSpr = (TextView) findViewById(R.id.antallspr);
         antallRiktige = (TextView) findViewById(R.id.antRiktig);
         antallFeil = (TextView) findViewById(R.id.antFeil);
         antalletTotal = (TextView) findViewById(R.id.totalAntall);
-        //--------SLUTT VARIABLER
 
 
-        //-------array svar----
+        //--------ARRAY--------
         matteSpr = getResources().getStringArray(R.array.matteSpr);
         matteSvar = getResources().getStringArray(R.array.matteSvar);
 
 
-        //--------KNAPPER-----
+        //--------KNAPPER--------
+        avbrytKnapp = (Button)findViewById(R.id.avbrytKnapp);
+        svarKnapp = (Button)findViewById(R.id.svarKnapp);
+
         knapp0 = (Button)findViewById(R.id.knapp0);
         knapp1 = (Button)findViewById(R.id.knapp1);
         knapp2 = (Button)findViewById(R.id.knapp2);
@@ -112,10 +119,34 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
         knapp8 = (Button)findViewById(R.id.knapp8);
         knapp9 = (Button)findViewById(R.id.knapp9);
         knappNullstill = (Button)findViewById(R.id.knappNullstill);
-        //knappMinus = (Button)findViewById(R.id.knappMinus);
         svarFr = (TextView)findViewById(R.id.svarFr);
-        //---slutt design knapper
+        //--------SLUTT KNAPPER--------
 
+
+        //--------LISTENERS--------
+        //Klikk på avbryt
+        avbrytKnapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                visAvbrytDialog();
+            }
+        });
+        //Klikk på svar
+        svarKnapp.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //gir alert/avslutt spill ved antall regnestykker
+                if(antTeller <= antallFraPref-1){
+                    svarKnapp();
+                }
+                else {
+                    //oppdaterer siste svar og gir melding om ferdig spill
+                    svarKnapp();
+                    visFullførtDialog();
+                }
+            }
+        });
+
+        //Tallknapper
         knapp0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,156 +207,54 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
                 svarFr.setText(svarFr.getText().toString() + "9");
             }
         });
-        /*knappMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(svarFr == null || svarFr.getText().toString().isEmpty()) { //motvirker bug ved minus etter tall
-
-                    svarFr.setText(svarFr.getText().toString() + minus);
-                }
-            }
-        });*/
         knappNullstill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 svarFr.setText(null);
             }
         });
+        //--------SLUTT LISTENERS--------
 
 
-        //henter fra disk fra preferansr fragement - fra preference fragment
+        //--------HENTER LAGRET RESULTAT FRA PREFERANSER FRAGMENTET--------
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        antallFraPref = Integer.parseInt(sharedPreferences.getString("spill","5")); //er her som standard ved ny innstallering
+        //setter totalantall
+        antallFraPref = Integer.parseInt(sharedPreferences.getString("spill","5")); //5 er her som standard ved ny innstallering
         antalletTotal.setText(String.valueOf(antallFraPref));
 
 
-        //første generering av spill
-        if(antTeller == 0) {
-            setNewNumbers();
+        //--------SETTER FØRSTE OPPSETT AV SPILL-SKJERMBILDET--------
+        if(antTeller == 0) { //første generering av spill
+            setOppsett ();
         }
 
-        //avbryt knapp
-        avbrytKnapp = (Button)findViewById(R.id.avbrytKnapp);
-        //ved klikk på avbryt - egen popup metode
-        avbrytKnapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                visAvbrytDialog();
-            }
-        });
-
-        //svar knapp
-        svarKnapp = (Button)findViewById(R.id.svarKnapp);
-        //ved klikk svar
-        svarKnapp.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //gir alert /avslutt spill ved antall regnestykker
-                if(antTeller <= antallFraPref-1){
-                    svarKnapp();
-                }
-                else {
-                    //oppdaterer siste svar og gir melding om ferdig spill
-                    svarKnapp();
-                    visFullførtDialog();
-
-                }
-            }
-        });
-        //-------- SLUTT KNAPPER-----
-
-    }//utenfor create
+    }
+    //-------CREATE SLUTTER---------
 
 
 
-
-    /*popup advarsel ved avbryt
+    //-------VISER EGENDEFINERT DIALOG VEL FULLFØRING AV SPILL---------
     private void visFullførtDialog() {
-        AlertDialog.Builder fBuilder = new AlertDialog.Builder(SpillActivity.this);
-        fBuilder.setTitle(R.string.spillFullfort);
-
-        fBuilder.setMessage(R.string.fullfortMsg);
-
-        fBuilder.setNegativeButton(R.string.tilbake, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //lagrer statistikk
-                lagreResultat();
-
-                Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
-                startActivity(intent_spill);
-            }
-        });
-        AlertDialog aDialog = fBuilder.create();
-        aDialog.show();
-    }*/
-
-    //egendefinert dialog
-    private void visFullførtDialog() {
-
         DialogFragment dialog = new FullfortSpillDialogFragment();
         dialog.show(getFragmentManager(), "Avslutt");
-        lagreResultat();
-
-        /*final Dialog dialog = new Dialog(SpillActivity.this);
-
-        dialog.setContentView(R.layout.fullfortspilldialog); //setter egen layout her
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-
-        // if button is clicked, close the custom dialog
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lagreResultat();
-
-                Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
-                startActivity(intent_spill);
-                finish();
-            }
-        });
-        dialog.show();*/
     }
 
 
-    //popup advarsel ved avbryt
+    //-------VISER DIALOG VED AVBRYT---------
     private void visAvbrytDialog() {
         DialogFragment dialog = new AvbrytDialogFragment();
         dialog.show(getFragmentManager(), "Avslutt");
     }
 
 
-    /*popup advarsel ved avbryt
-    private void visAvbrytDialog() {
-        AlertDialog.Builder aBuilder = new AlertDialog.Builder(SpillActivity.this);
-        aBuilder.setTitle(R.string.avbryt);
-
-        aBuilder.setMessage(R.string.avbrytMsg);
-
-        aBuilder.setNegativeButton(R.string.nei, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(),R.string.fortsett,Toast.LENGTH_LONG).show();
-            }
-        });
-
-        aBuilder.setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent_spill = new Intent (SpillActivity.this,MainActivity.class);
-                startActivity(intent_spill);
-            }
-        });
-
-        AlertDialog aDialog = aBuilder.create();
-        aDialog.show();
-    }*/
-
-    //advarsel ved tilbake trykk
+    //-------VISER DIALOG VED TILBAKEKNAPP---------
     @Override
     public void onBackPressed() {
         visAvbrytDialog();
     }
 
-    //svar metode
+
+    //-------METODE FOR SVAR---------
     public void svarKnapp() {
         if (svarFr.getText().toString().equals("")) { //kontrollerer at svar ikke er tom
             Toast.makeText(SpillActivity.this, R.string.feilInput, Toast.LENGTH_SHORT).show();
@@ -343,16 +272,17 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
             else {
                 String msg = " "+riktigSvar;
                 fasit.setText(R.string.feilSvar);
-                fasit.append(msg); //legger til antall feil
+                fasit.append(msg); //legger til hva riktig svar var
                 antFeilInt++;
             }
-            setNewNumbers();
+            //setter oppsettet på nytt
+            setOppsett ();
         }
     }
 
-    //METODE FOR Å LAGRE RESTULTAT---------
+
+    //-------METODE FOR Å LAGRE RESTULTAT---------
     private void lagreResultat() {
-        //DISKLAGRING
         //henter fra disk
         int antRiktigIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTRIKTIGINT,0);
         int antFeilIntStatistikk = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTFEILINT,0);
@@ -361,17 +291,17 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
         antRiktigInt += antRiktigIntStatistikk;
         antFeilInt += antFeilIntStatistikk;
 
-        //Lagring til disk
+        //ny lagring til disk
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt).apply();
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTFEILINT, antFeilInt).apply();
-        //SLUTT disklagring
     }
 
-    //sjekkmetode om tall er brukt
+
+    //-------SJEKK OM TALL/INDEKS ER BRUKT TIDLIGERE (SPØRSMÅL)---------
     private boolean sjekkTall(int indeksR) {
         boolean sjekk = false;
-
-        for (int i : brukteSpr) { //kontrollerer arrayet som har brukte indekser
+        //går gjennom arrayet som er fylt med brukte indekser
+        for (int i : brukteSpr) {
             if (i == indeksR) {
                 sjekk = true; //finnes i arrayet
                 break;
@@ -380,7 +310,8 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
         return sjekk;
     }
 
-    //genererer randomisert tall
+
+    //-------GENERERER RANDOMISERT TALL MELLOM 0-24 (STR PÅ MATTEARRAYET)---------
     private int genererRandom() {
         Random r = new Random();
         indeksR = r.nextInt(24+1); //[min = 0, max = 24]
@@ -389,7 +320,8 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
     }
 
 
-    private void setNewNumbers () {
+    //-------OPPSETT AV SPILL-SKJERMBILDET---------
+    private void setOppsett () {
         //randomiserer første indeks
         if(antTeller < antallFraPref) { //denne er er for å unngå at det genereres enda ett tall i arrayet. Unngår index outofbound
 
@@ -397,7 +329,7 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
                 indeksR = genererRandom();
             }
 
-            //kontrollerer at generert indeks ikke rer i array fra tidligere
+            //kontrollerer at generert indeks ikke er i array fra tidligere
             Boolean doContinue = true;
             while (doContinue) {
                 if(!sjekkTall(indeksR)) { //tallet finnes ikke og vi kan hoppe ut
@@ -409,92 +341,85 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
             }
 
             if(!doContinue) {
-                //legger random indeks inn i brukt array til samling
+                //legger random indeks inn i bruktarray til samling av disse
                 brukteSpr.add(indeksR);
 
-                //Spørsmålet som kommer - henter fra spørsmål-array
+                //Random spørsmålet som kommer - hentet fra spørsmål-array
                 sporsmaalet.setText(matteSpr[indeksR]);
 
                 tellerSpr.setText(String.valueOf(antTeller++));
                 antallRiktige.setText(String.valueOf(antRiktigInt));
                 antallFeil.setText(String.valueOf(antFeilInt));
                 svarFr.setText(null);
-
-                String tallbrukt = "";
-                tallbrukt =+ indeksR+" ";
-
-                Toast.makeText(SpillActivity.this, tallbrukt, Toast.LENGTH_SHORT).show();
             }
         }
-        else{//oppdaterer siste svar/verdier når spill alert dukker opp, unngår at det dukker opp et ekstra mattestykke man ikke får svar på
-            tellerSpr.setText(String.valueOf(antTeller++));
+        else{//oppdaterer siste svar/verdier når spill alert dukker opp, unngår at det dukker opp et ekstra mattestykke man ikke får svart på
+            tellerSpr.setText(String.valueOf(antTeller));
             antallRiktige.setText(String.valueOf(antRiktigInt));
             antallFeil.setText(String.valueOf(antFeilInt));
             svarFr.setText(null);
-
         }
 
     }
 
-    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
-    public void setLocale(String lang) {
+    //-------SETTER SPRÅK LOCALE---------
+    public void setLocale(String spraak) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration cf = res.getConfiguration();
-        cf.setLocale(new Locale(lang));
+        cf.setLocale(new Locale(spraak));
         res.updateConfiguration(cf,dm);
     }
 
-    public void loadLocale() {
-        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
-        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+    //-------GETTER SPRÅK LOCALE---------
+    public void getLocale() {
+        SharedPreferences preferanser = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = preferanser.getString(NOKKEL_SPRAAKKODE,"");
 
         setLocale(spraak);
     }
 
 
-    //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
+    //-------LAGRING AV DATA VED ROTASJON---------
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //husker strenger
+        //strenger
         outState.putString(NOKKEL_ANTTELLER, tellerSpr.getText().toString());
         outState.putString(NOKKEL_ANTRIKTIG, antallRiktige.getText().toString());
         outState.putString(NOKKEL_ANTFEIL, antallFeil.getText().toString());
         outState.putString(NOKKEL_SPORSMAAL, sporsmaalet.getText().toString());
         outState.putString(NOKKEL_FASIT, fasit.getText().toString());
-
-        //husker tall
+        //tall
         outState.putInt(NOKKEL_ANTTELLERINT, antTeller);
         outState.putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt);
         outState.putInt(NOKKEL_ANTFEILINT, antFeilInt);
         outState.putInt(NOKKEL_PREFERANSESPILL , antallFraPref);
         outState.putInt(NOKKEL_INDEKSR, indeksR);
-
-        //svar og array
+        //array
         outState.putString(NOKKEL_SVARFR,svarFr.getText().toString());
         outState.putIntegerArrayList(NOKKEL_BRUKTARRAY, brukteSpr);
 
         super.onSaveInstanceState(outState);
     }
 
-    //henter den lagrede informasjonen
+
+    //-------HENTING AV LAGRET DATA---------
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
-        //restor strenger
+        //strenger
         tellerSpr.setText(savedInstanceState.getString(NOKKEL_ANTTELLER));
         antallRiktige.setText(savedInstanceState.getString(NOKKEL_ANTRIKTIG));
         antallFeil.setText(savedInstanceState.getString(NOKKEL_ANTFEIL));
         sporsmaalet.setText(savedInstanceState.getString(NOKKEL_SPORSMAAL));
         fasit.setText(savedInstanceState.getString(NOKKEL_FASIT));
-
-        //restor tall
+        //tall
         antTeller = savedInstanceState.getInt(NOKKEL_ANTTELLERINT);
         antRiktigInt = savedInstanceState.getInt(NOKKEL_ANTRIKTIGINT);
         antFeilInt = savedInstanceState.getInt(NOKKEL_ANTFEILINT);
         antallFraPref = savedInstanceState.getInt(NOKKEL_PREFERANSESPILL);
         indeksR = savedInstanceState.getInt(NOKKEL_INDEKSR);
-
-        //svar og array
+        //array
         svarFr.setText((savedInstanceState.getString(NOKKEL_SVARFR)));
         brukteSpr = savedInstanceState.getIntegerArrayList(NOKKEL_BRUKTARRAY);
 

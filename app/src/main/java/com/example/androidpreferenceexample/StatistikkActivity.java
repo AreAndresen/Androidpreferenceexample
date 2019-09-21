@@ -23,52 +23,57 @@ import java.util.Locale;
 public class StatistikkActivity extends AppCompatActivity implements SlettStatistikkDialogFragment.DialogClickListener {
 
 
-    //SlettStatistikk Dialog knapper
+    //--------DIALOG KNAPPER TIL SLETTSTATISTIKKDIALOG--------
     @Override
-    public void onYesClick() {
+    public void jaClick() {
         nullStill();
         Toast.makeText(getApplicationContext(),R.string.statistikkSlettet,Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Override
-    public void onNoClick() {
+    public void neiClick() {
         Toast.makeText(getApplicationContext(),R.string.avbrotSlettMsg,Toast.LENGTH_LONG).show();
         return;
     }
 
-    //brukes til overføring av statistikk
+    //--------LAGRINGSKODER--------
+    //feil/riktig
     private static final String NOKKEL_ANTRIKTIGINT = "antRiktigINT_nokkel";
     private static final String NOKKEL_ANTFEILINT = "antFeilINT_nokkel";
+    //preferanser
     private static final String NOKKEL_SPRAAKKODE = "spraakKode_nokkel";
 
-    int antFeilInt;
-    int antRiktigInt;
+    //--------DIV TALL OG INDEKSER--------
+    int antFeilInt, antRiktigInt;
 
+    //--------KNAPPER--------
     Button tilbakeKnapp, slettStatistikkKnapp;
+
+    //--------VIWES--------
     TextView totalAntR, totalAntF;
 
+
+    //-------CREATE STARTER---------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale(); //forhindrer at språk går tilbake til standard ved rotasjon
+        //--------OPPDATERER SPÅKLOCAL FØR INNHOLDET BLIR SATT--------
+        getLocale();
+
         setContentView(R.layout.activity_statistikk);
 
 
-        //antall riktig/feil output
+        //--------OUTPUT--------
         totalAntR = (TextView) findViewById(R.id.totalAntRiktig);
         totalAntF = (TextView) findViewById(R.id.totalAntFeil);
 
-        //setter antallet i statistikk
-        setNewNumbers();
-
-        //avbryt knapp
+        //--------KNAPPER--------
         tilbakeKnapp = (Button)findViewById(R.id.tilbake);
-        //slett knapp
         slettStatistikkKnapp = (Button)findViewById(R.id.slettStatistikk);
 
 
-        //tilbake listener
+        //--------LISTENERS--------
         tilbakeKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,65 +81,41 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
                 startActivity(intent_spill);
             }
         });
-        //slett listener
         slettStatistikkKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                slettDialog2();
+                slettDialog();
             }
         });
+        //--------SLUTT LISTENERS--------
+
+
+        //--------SETTER FØRSTE OPPSETT AV STATISTIKK-SKJERMBILDET--------
+        setOppsett();
     }
+    //-------CREATE SLUTTER---------
 
 
-    //popup advarsel ved avbryt ved bruk av dialog fragment
-    private void slettDialog2() {
-        DialogFragment dialog = new SlettStatistikkDialogFragment();
-        dialog.show(getFragmentManager(), "Avslutt");
-    }
-
-
-    /*popup advarsel ved avbryt
+    //-------VISER DIALOG VED TRYKK PÅ SLETT---------
     private void slettDialog() {
-        AlertDialog.Builder aBuilder = new AlertDialog.Builder(StatistikkActivity.this);
-        aBuilder.setTitle(R.string.slettStatistikken);
-
-        aBuilder.setMessage(R.string.slettMsg);
-
-        aBuilder.setNegativeButton(R.string.nei, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(),R.string.avbrotSlettMsg,Toast.LENGTH_LONG).show();
-            }
-        });
-
-        aBuilder.setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(),R.string.statistikkSlettet,Toast.LENGTH_LONG).show();
-                //nullstiller statistikken
-                nullStill();
-            }
-        });
-
-        AlertDialog aDialog = aBuilder.create();
-        //show alert dialog
-        aDialog.show();
-    }*/
+        DialogFragment dialog = new SlettStatistikkDialogFragment();
+        dialog.show(getFragmentManager(), "Slett");
+    }
 
 
-    private void setNewNumbers () {
-        //SETTER VANSKELIGHETSGRAD ANTALLLET
-
-        //henter fra disk --- > DISSE VERDIENE SOM BLIR STANDARDVERIDER VED NY NEDLASTNING
-        antRiktigInt = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTRIKTIGINT,55);
-        antFeilInt = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTFEILINT,11);
+    //-------OPPSETT AV STATISTIKK-SKJERMBILDET---------
+    private void setOppsett () {
+        //henter fra disk - samt setter standardverdiene 0 ved første kjøring av spill
+        antRiktigInt = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTRIKTIGINT,0);
+        antFeilInt = getSharedPreferences("APP_INFO",MODE_PRIVATE).getInt(NOKKEL_ANTFEILINT,0);
 
         //setter textviewet
         totalAntR.setText(String.valueOf(antRiktigInt));
         totalAntF.setText(String.valueOf(antFeilInt));
     }
 
-    //nullstiller statestikken
+
+    //-------NULLSTILLER STATISTIKK---------
     public void nullStill() {
         antFeilInt = 0;
         antRiktigInt = 0;
@@ -144,49 +125,47 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
     }
 
 
-    //TRENGER DENNE HER FOR Å LA VALGT SPRÅK VÆRE MED FRA START
-    public void setLocale(String lang) {
+    //-------SETTER SPRÅK LOCALE---------
+    public void setLocale(String spraak) {
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration cf = res.getConfiguration();
-        cf.setLocale(new Locale(lang));
+        cf.setLocale(new Locale(spraak));
         res.updateConfiguration(cf,dm);
     }
 
-    public void loadLocale() {
-        SharedPreferences prefs = getSharedPreferences("APP_INFO", MODE_PRIVATE);
-        String spraak = prefs.getString(NOKKEL_SPRAAKKODE,"");
+
+    //-------GETTER SPRÅK LOCALE---------
+    public void getLocale() {
+        SharedPreferences preferanser = getSharedPreferences("APP_INFO", MODE_PRIVATE);
+        String spraak = preferanser.getString(NOKKEL_SPRAAKKODE,"");
 
         setLocale(spraak);
     }
 
 
-    //lagrer innholdet i teksten - for å beholde til rotasjon av skjermen
+    //-------LAGRING AV DATA VED ROTASJON---------
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //husker tall
         outState.putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt);
         outState.putInt(NOKKEL_ANTFEILINT, antFeilInt);
-
-        //outState.putString(NOKKEL_SPRAAKKODE, spraakKode);
 
         super.onSaveInstanceState(outState);
     }
 
-    //henter den lagrede informasjonen
+
+    //-------HENTING AV LAGRET DATA---------
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
         //restor tall
         antRiktigInt = savedInstanceState.getInt(NOKKEL_ANTRIKTIGINT);
         antFeilInt = savedInstanceState.getInt(NOKKEL_ANTFEILINT);
 
-        //spraakKode = savedInstanceState.getString(NOKKEL_SPRAAKKODE);
-
         super.onRestoreInstanceState(savedInstanceState);
     }
 
 
-    //trenger disse slik at statestikken forblir slettet etter nullstill metoden
+    //-------SØRGER FOR AT STATISTIKK FORBLIR NULLSTILT OM DETTE ER TILFELLE---------
     @Override
     protected void onPause(){
         super.onPause();
@@ -194,6 +173,7 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTRIKTIGINT, antRiktigInt).apply();
         getSharedPreferences("APP_INFO",MODE_PRIVATE).edit().putInt(NOKKEL_ANTFEILINT, antFeilInt).apply();
     }
+
 
     @Override
     protected void onResume(){

@@ -12,7 +12,7 @@ public class FullfortSpillDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
-        public void onYesClick();
+        public void fullfortSpillClick();
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,11 +35,11 @@ public class FullfortSpillDialogFragment extends DialogFragment {
         dialog.setContentView(R.layout.fullfortspilldialog); //setter egen layout her
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
-        // if button is clicked, close the custom dialog
+       //bare en ja knapp når spill er ferdig
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //bare en ja knapp når spill er ferdig
-                callback.onYesClick();
+            public void onClick(View v) {
+                callback.fullfortSpillClick();
             }
         });
         dialog.show();

@@ -2,7 +2,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         android:summary="Språkinformasjon"
-        android:title="@string/hovedTittelSpraak" >
+        android:textSize="30sp"
+        android:title="@string/hovedTittelSpraak">
         <ListPreference
             android:entries="@array/spraakValg"
             android:entryValues="@array/spraakVerdier"
