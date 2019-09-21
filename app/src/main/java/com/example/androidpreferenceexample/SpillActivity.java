@@ -285,6 +285,7 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
                 String msg = " "+riktigSvar;
                 fasit.setText(R.string.feilSvar);
                 fasit.append(msg); //legger til hva riktig svar var
+                antFeilInt++;
 
                 setOppsett ();
             }
