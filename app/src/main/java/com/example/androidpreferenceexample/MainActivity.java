@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.androidpreferenceexample.Fragementer.PreferanserFragment;
 
 import java.util.Locale;
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent_preferanser = new Intent (MainActivity.this, PreferanserFragment.class);
                 startActivity(intent_preferanser);
+                finish(); //bruker finish her fordi vi kommer tilbake med en ny intent fra preferanser for å oppdatere språk - unngå å legge på stack
             }
         });
         //--------SLUTT LISTENERS--------

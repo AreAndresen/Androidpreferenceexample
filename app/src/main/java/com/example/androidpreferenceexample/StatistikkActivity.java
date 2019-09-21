@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidpreferenceexample.Fragementer.PreferanserFragment;
 import com.example.androidpreferenceexample.Fragementer.SlettStatistikkDialogFragment;
 
 import java.util.Locale;
@@ -76,8 +77,7 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
         tilbakeKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent_spill = new Intent (StatistikkActivity.this,MainActivity.class);
-                startActivity(intent_spill);
+                finish(); //bruker finish så activity ikke legger seg på stack
             }
         });
         slettStatistikkKnapp.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +99,12 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
     private void slettDialog() {
         DialogFragment dialog = new SlettStatistikkDialogFragment();
         dialog.show(getFragmentManager(), "Slett");
+    }
+
+    //-------TILBAKEKNAPP LUKKER ACTIVITY---------
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 

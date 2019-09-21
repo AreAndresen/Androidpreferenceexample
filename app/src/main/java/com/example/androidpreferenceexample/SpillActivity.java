@@ -28,7 +28,7 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
     @Override
     public void fullfortSpillClick() {
         lagreResultat(); //lagrer ved klikk fullført
-        finish();
+        finish(); //lukker activity
     }
 
     //--------DIALOG KNAPPER TIL AVBRYTDIALOGFRAGMENT--------
@@ -370,7 +370,6 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
             antallFeil.setText(String.valueOf(antFeilInt));
             svarFr.setText(null);
         }
-
     }
 
     //-------SETTER SPRÅK LOCALE---------

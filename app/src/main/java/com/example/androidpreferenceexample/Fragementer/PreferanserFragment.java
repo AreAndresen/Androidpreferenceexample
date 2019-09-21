@@ -115,6 +115,7 @@ public class PreferanserFragment extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent_tilbake = new Intent (PreferanserFragment.this, MainActivity.class);
         startActivity(intent_tilbake);
+        finish();
     }
 
 
