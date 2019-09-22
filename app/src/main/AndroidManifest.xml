@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidpreferenceexample">
+    package="com.example.s304114mappe1">
 
     <application
         android:allowBackup="true"
@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".StatistikkActivity"></activity>
-        <activity android:name=".SpillActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.s304114mappe1.StatistikkActivity"></activity>
+        <activity android:name="com.example.s304114mappe1.SpillActivity" />
+        <activity android:name="com.example.s304114mappe1.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Fragementer.PreferanserFragment"
-            android:parentActivityName=".MainActivity"
+            android:name="com.example.s304114mappe1.Fragementer.PreferanserFragment"
+            android:parentActivityName="com.example.s304114mappe1.MainActivity"
             android:configChanges="locale"
             />
 

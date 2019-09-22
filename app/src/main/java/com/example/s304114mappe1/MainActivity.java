@@ -1,4 +1,4 @@
-package com.example.androidpreferenceexample;
+package com.example.s304114mappe1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import com.example.androidpreferenceexample.Fragementer.PreferanserFragment;
+import com.example.s304114mappe1.Fragementer.PreferanserFragment;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.androidpreferenceexample;
+package com.example.s304114mappe1;
 
 import org.junit.Test;
 

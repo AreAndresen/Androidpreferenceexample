@@ -1,4 +1,4 @@
-package com.example.androidpreferenceexample;
+package com.example.s304114mappe1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DialogFragment;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.androidpreferenceexample.Fragementer.SlettStatistikkDialogFragment;
+import com.example.s304114mappe1.Fragementer.SlettStatistikkDialogFragment;
 import java.util.Locale;
 
 public class StatistikkActivity extends AppCompatActivity implements SlettStatistikkDialogFragment.DialogClickListener {

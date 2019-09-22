@@ -1,4 +1,4 @@
-package com.example.androidpreferenceexample;
+package com.example.s304114mappe1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.androidpreferenceexample.Fragementer.AvbrytDialogFragment;
-import com.example.androidpreferenceexample.Fragementer.FullfortSpillDialogFragment;
+import com.example.s304114mappe1.Fragementer.AvbrytDialogFragment;
+import com.example.s304114mappe1.Fragementer.FullfortSpillDialogFragment;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;

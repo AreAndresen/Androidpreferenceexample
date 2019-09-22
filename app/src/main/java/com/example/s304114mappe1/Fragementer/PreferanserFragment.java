@@ -1,4 +1,4 @@
-package com.example.androidpreferenceexample.Fragementer;
+package com.example.s304114mappe1.Fragementer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,8 +9,8 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.util.DisplayMetrics;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.androidpreferenceexample.MainActivity;
-import com.example.androidpreferenceexample.R;
+import com.example.s304114mappe1.MainActivity;
+import com.example.s304114mappe1.R;
 import java.util.Locale;
 
 public class PreferanserFragment extends AppCompatActivity {

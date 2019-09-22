@@ -1,11 +1,11 @@
-package com.example.androidpreferenceexample.Fragementer;
+package com.example.s304114mappe1.Fragementer;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import com.example.androidpreferenceexample.R;
+import com.example.s304114mappe1.R;
 
 public class AvbrytDialogFragment extends DialogFragment {
     private DialogClickListener callback;
