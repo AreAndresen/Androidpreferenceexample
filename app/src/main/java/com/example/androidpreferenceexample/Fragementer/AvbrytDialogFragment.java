@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.androidpreferenceexample.R;
 
@@ -14,8 +12,8 @@ public class AvbrytDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
-        public void jaClick();
-        public void neiClick();
+        void jaClick();
+        void neiClick();
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

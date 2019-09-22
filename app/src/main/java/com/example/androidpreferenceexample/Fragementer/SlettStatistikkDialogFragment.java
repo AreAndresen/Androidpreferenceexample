@@ -12,8 +12,8 @@ public class SlettStatistikkDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
-        public void jaClick();
-        public void neiClick();
+        void jaClick();
+        void neiClick();
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

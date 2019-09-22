@@ -1,11 +1,7 @@
 package com.example.androidpreferenceexample;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,8 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.androidpreferenceexample.Fragementer.PreferanserFragment;
 import com.example.androidpreferenceexample.Fragementer.SlettStatistikkDialogFragment;
 
 import java.util.Locale;
@@ -65,12 +59,12 @@ public class StatistikkActivity extends AppCompatActivity implements SlettStatis
 
 
         //--------OUTPUT--------
-        totalAntR = (TextView) findViewById(R.id.totalAntRiktig);
-        totalAntF = (TextView) findViewById(R.id.totalAntFeil);
+        totalAntR = findViewById(R.id.totalAntRiktig);
+        totalAntF = findViewById(R.id.totalAntFeil);
 
         //--------KNAPPER--------
-        tilbakeKnapp = (Button)findViewById(R.id.tilbake);
-        slettStatistikkKnapp = (Button)findViewById(R.id.slettStatistikk);
+        tilbakeKnapp = findViewById(R.id.tilbake);
+        slettStatistikkKnapp = findViewById(R.id.slettStatistikk);
 
 
         //--------LISTENERS--------

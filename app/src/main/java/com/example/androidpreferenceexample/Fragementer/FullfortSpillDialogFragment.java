@@ -12,7 +12,7 @@ public class FullfortSpillDialogFragment extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener{
-        public void fullfortSpillClick();
+        void fullfortSpillClick();
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class FullfortSpillDialogFragment extends DialogFragment {
         final Dialog dialog = new Dialog(getActivity());
 
         dialog.setContentView(R.layout.fullfortspilldialog); //setter egen layout her
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        Button dialogButton = dialog.findViewById(R.id.dialogButtonOK);
 
        //bare en ja knapp når spill er ferdig
         dialogButton.setOnClickListener(new View.OnClickListener() {

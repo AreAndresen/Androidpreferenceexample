@@ -45,13 +45,13 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
 
 
     //--------VIWES--------
-    TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit,  svarFr;
+    private TextView tellerSpr, antallRiktige, antallFeil, antalletTotal, sporsmaalet, fasit,  svarFr;
 
     //--------KNAPPER--------
-    Button svarKnapp, avbrytKnapp, knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill;
+    private Button svarKnapp, avbrytKnapp, knapp0, knapp1, knapp2, knapp3, knapp4, knapp5,knapp6,knapp7,knapp8,knapp9, knappNullstill;
 
     //--------ARRAYS FRA RESOURCE--------
-    String[] matteSpr, matteSvar;
+    private String[] matteSpr, matteSvar;
 
     //--------ARRAY TIL LAGRING AV BRUKTE INDEKSER--------
     ArrayList<Integer> brukteSpr = new ArrayList<Integer>();
@@ -91,12 +91,12 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
 
 
         //--------OUTPUT--------
-        sporsmaalet = (TextView) findViewById(R.id.sporsmaal);
-        fasit = (TextView) findViewById(R.id.fasit);
-        tellerSpr = (TextView) findViewById(R.id.antallspr);
-        antallRiktige = (TextView) findViewById(R.id.antRiktig);
-        antallFeil = (TextView) findViewById(R.id.antFeil);
-        antalletTotal = (TextView) findViewById(R.id.totalAntall);
+        sporsmaalet = findViewById(R.id.sporsmaal);
+        fasit = findViewById(R.id.fasit);
+        tellerSpr = findViewById(R.id.antallspr);
+        antallRiktige = findViewById(R.id.antRiktig);
+        antallFeil = findViewById(R.id.antFeil);
+        antalletTotal = findViewById(R.id.totalAntall);
 
 
         //--------ARRAY--------
@@ -105,21 +105,21 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
 
 
         //--------KNAPPER--------
-        avbrytKnapp = (Button)findViewById(R.id.avbrytKnapp);
-        svarKnapp = (Button)findViewById(R.id.svarKnapp);
+        avbrytKnapp = findViewById(R.id.avbrytKnapp);
+        svarKnapp = findViewById(R.id.svarKnapp);
 
-        knapp0 = (Button)findViewById(R.id.knapp0);
-        knapp1 = (Button)findViewById(R.id.knapp1);
-        knapp2 = (Button)findViewById(R.id.knapp2);
-        knapp3 = (Button)findViewById(R.id.knapp3);
-        knapp4 = (Button)findViewById(R.id.knapp4);
-        knapp5 = (Button)findViewById(R.id.knapp5);
-        knapp6 = (Button)findViewById(R.id.knapp6);
-        knapp7 = (Button)findViewById(R.id.knapp7);
-        knapp8 = (Button)findViewById(R.id.knapp8);
-        knapp9 = (Button)findViewById(R.id.knapp9);
-        knappNullstill = (Button)findViewById(R.id.knappNullstill);
-        svarFr = (TextView)findViewById(R.id.svarFr);
+        knapp0 = findViewById(R.id.knapp0);
+        knapp1 = findViewById(R.id.knapp1);
+        knapp2 = findViewById(R.id.knapp2);
+        knapp3 = findViewById(R.id.knapp3);
+        knapp4 = findViewById(R.id.knapp4);
+        knapp5 = findViewById(R.id.knapp5);
+        knapp6 = findViewById(R.id.knapp6);
+        knapp7 = findViewById(R.id.knapp7);
+        knapp8 = findViewById(R.id.knapp8);
+        knapp9 = findViewById(R.id.knapp9);
+        knappNullstill = findViewById(R.id.knappNullstill);
+        svarFr = findViewById(R.id.svarFr);
         //--------SLUTT KNAPPER--------
 
 
@@ -342,17 +342,17 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
             }
 
             //kontrollerer at generert indeks ikke er i array fra tidligere
-            Boolean doContinue = true;
-            while (doContinue) {
+            Boolean funnet = true;
+            while (funnet) {
                 if(!sjekkTall(indeksR)) { //tallet finnes ikke og vi kan hoppe ut
-                    doContinue = false;
+                    funnet = false;
                 }
                 else {
                     genererRandom(); //genererer på nytt om det finnes
                 }
             }
 
-            if(!doContinue) {
+            if(!funnet) {
                 //legger random indeks inn i bruktarray til samling av disse
                 brukteSpr.add(indeksR);
 
