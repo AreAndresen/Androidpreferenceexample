@@ -53,7 +53,7 @@ public class SpillActivity extends AppCompatActivity implements FullfortSpillDia
     //--------ARRAYS FRA RESOURCE--------
     String[] matteSpr, matteSvar;
 
-    //--------ARRAYS TIL LAGRING AV BRUKTE INDEKSER--------
+    //--------ARRAY TIL LAGRING AV BRUKTE INDEKSER--------
     ArrayList<Integer> brukteSpr = new ArrayList<Integer>();
 
     //--------DIV TALL OG INDEKSER--------
