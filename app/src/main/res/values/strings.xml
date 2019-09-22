@@ -52,7 +52,7 @@
     <string name="hovedTittelSpraak">Språk</string>
     <string name="tittelSpraak">Velg språk</string>
 
-    <string name="hovedTittelSpill">Spillstørrelse</string>
+    <string name="hovedTittelSpill">Spill størrelse</string>
     <string name="tittelSpill">Velg antall regnestykker</string>
 
     <string-array name="spraakValg">

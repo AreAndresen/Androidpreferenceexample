@@ -505,7 +505,7 @@
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/slackey"
         android:hint="@string/dittSvar"
-        android:shadowColor="#004496"
+        android:shadowColor="#000000"
         android:shadowDx="9"
         android:shadowDy="9"
         android:shadowRadius="9"
