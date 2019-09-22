@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import com.example.androidpreferenceexample.R;
 
 public class SlettStatistikkDialogFragment extends DialogFragment {

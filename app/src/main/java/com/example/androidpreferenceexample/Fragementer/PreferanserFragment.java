@@ -11,7 +11,6 @@ import android.util.DisplayMetrics;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.androidpreferenceexample.MainActivity;
 import com.example.androidpreferenceexample.R;
-
 import java.util.Locale;
 
 public class PreferanserFragment extends AppCompatActivity {

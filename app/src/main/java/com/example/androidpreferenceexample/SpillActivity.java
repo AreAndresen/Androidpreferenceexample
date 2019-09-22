@@ -13,10 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.androidpreferenceexample.Fragementer.AvbrytDialogFragment;
 import com.example.androidpreferenceexample.Fragementer.FullfortSpillDialogFragment;
-
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;

@@ -12,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import com.example.androidpreferenceexample.Fragementer.PreferanserFragment;
-
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {

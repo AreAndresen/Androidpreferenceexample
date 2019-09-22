@@ -5,7 +5,6 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.androidpreferenceexample.R;
 
 public class FullfortSpillDialogFragment extends DialogFragment {

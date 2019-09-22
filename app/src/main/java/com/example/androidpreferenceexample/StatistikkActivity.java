@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.androidpreferenceexample.Fragementer.SlettStatistikkDialogFragment;
-
 import java.util.Locale;
 
 public class StatistikkActivity extends AppCompatActivity implements SlettStatistikkDialogFragment.DialogClickListener {
